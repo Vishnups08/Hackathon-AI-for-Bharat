@@ -8,7 +8,7 @@
 **Jan Sahayak (जन सहायक)** — AI-Powered Voice-First Government Scheme Eligibility Assistant
 
 ### 1.2 Team Name
-Team Setu
+Future Forward India
 
 ### 1.3 Problem Statement
 **Problem Statement 3:** Build an AI-powered solution that improves access to information, resources, or opportunities for communities and public systems.

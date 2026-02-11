@@ -2854,4 +2854,4 @@ ruff==0.1.11                           # Linter
 
 *This design document is prepared for the AI for Bharat Hackathon 
 
-*Team Setu — "Bridging government welfare to every citizen of Bharat"*
+*Future Forward India — "Bridging government welfare to every citizen of Bharat"*

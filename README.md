@@ -14,7 +14,7 @@
 India allocates over **₹14 lakh crore annually** to 2,000+ schemes, yet many eligible citizens miss out due to awareness gaps, language barriers, and complex eligibility criteria. Jan Sahayak solves this by replacing complex forms with a simple voice-first, conversational interface in local languages.
 ---
 
-## 👥 Team Setu
+## 👥 Future Forward India
 
 Dedicated to bridging the gap between digital governance and the last-mile citizen.
 

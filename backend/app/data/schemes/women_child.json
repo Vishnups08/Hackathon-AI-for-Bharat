@@ -1,0 +1,262 @@
+[
+    {
+        "scheme_id": "SSY_001",
+        "name_en": "Sukanya Samriddhi Yojana",
+        "name_hi": "सुकन्या समृद्धि योजना",
+        "ministry": "Ministry of Finance",
+        "categories": [
+            "women_child",
+            "savings"
+        ],
+        "description_en": "High-interest savings scheme for girl child (up to 10 years old) with tax benefits under section 80C.",
+        "description_hi": "बालिकाओं (10 वर्ष तक) के लिए धारा 80C के तहत कर लाभ के साथ उच्च-ब्याज बचत योजना।",
+        "eligibility": {
+            "age_min": null,
+            "age_max": 10,
+            "gender": "female",
+            "income_max_annual": null,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "Girl child up to 10 years, maximum 2 accounts per family"
+        },
+        "benefits": {
+            "type": "savings",
+            "amount": "8.2% interest (current rate), tax-free maturity",
+            "frequency": "Annual interest",
+            "details": "Min deposit Rs 250/year, max Rs 1.5 lakh/year. Matures in 21 years or marriage after 18."
+        },
+        "documents_required": [
+            {
+                "document_name": "Birth Certificate of Girl",
+                "is_mandatory": true,
+                "where_to_obtain": "Municipal office",
+                "estimated_time": "7-14 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Aadhaar Card (Parent)",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "Address Proof",
+                "is_mandatory": true,
+                "where_to_obtain": "Various",
+                "estimated_time": "Available",
+                "alternatives": [
+                    "Voter ID",
+                    "Passport",
+                    "Utility bill"
+                ]
+            },
+            {
+                "document_name": "PAN Card (Parent)",
+                "is_mandatory": false,
+                "where_to_obtain": "NSDL",
+                "estimated_time": "7-15 days",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://indiapost.gov.in",
+                "steps": [
+                    "Visit post office or bank",
+                    "Fill SSY account form",
+                    "Min deposit Rs 250"
+                ]
+            },
+            "offline": {
+                "office": "Post Office or selected banks",
+                "steps": [
+                    "Visit with girl's birth certificate",
+                    "Fill form",
+                    "Deposit min Rs 250",
+                    "Get passbook"
+                ]
+            },
+            "via_csc": false
+        },
+        "helpline": "1800-266-6868",
+        "official_url": "https://indiapost.gov.in",
+        "launched_year": 2015,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "PMMVY_001",
+        "name_en": "PM Matru Vandana Yojana",
+        "name_hi": "पीएम मातृ वंदना योजना",
+        "ministry": "Ministry of Women & Child Development",
+        "categories": [
+            "women_child",
+            "cash_transfer"
+        ],
+        "description_en": "Cash incentive of Rs 5,000 in three installments to pregnant and lactating mothers for first living child.",
+        "description_hi": "गर्भवती और स्तनपान कराने वाली माताओं को पहले जीवित बच्चे के लिए तीन किस्तों में 5,000 रुपये का नकद प्रोत्साहन।",
+        "eligibility": {
+            "age_min": 19,
+            "age_max": null,
+            "gender": "female",
+            "income_max_annual": null,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "For first living child only, not for government employees"
+        },
+        "benefits": {
+            "type": "cash_transfer",
+            "amount": "Rs 5,000 in 3 installments",
+            "frequency": "Per pregnancy (first child)",
+            "details": "Rs 1,000 on registration, Rs 2,000 after 6 months, Rs 2,000 after child birth registration + vaccination"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "Bank Account",
+                "is_mandatory": true,
+                "where_to_obtain": "Any bank",
+                "estimated_time": "1-2 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "MCP Card",
+                "is_mandatory": true,
+                "where_to_obtain": "PHC/ANM",
+                "estimated_time": "Same day",
+                "alternatives": []
+            },
+            {
+                "document_name": "Pregnancy Registration",
+                "is_mandatory": true,
+                "where_to_obtain": "PHC/ANM/ASHA",
+                "estimated_time": "Same day",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://pmmvy.wcd.gov.in",
+                "steps": [
+                    "Register at Anganwadi center",
+                    "Fill PMMVY form",
+                    "Submit MCP card and Aadhaar"
+                ]
+            },
+            "offline": {
+                "office": "Anganwadi Center or Health facility",
+                "steps": [
+                    "Visit Anganwadi center",
+                    "Register pregnancy",
+                    "Fill 3 forms for 3 installments",
+                    "Submit at each milestone"
+                ]
+            },
+            "via_csc": false
+        },
+        "helpline": "181",
+        "official_url": "https://pmmvy.wcd.gov.in",
+        "launched_year": 2017,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "MSK_001",
+        "name_en": "Mahila Shakti Kendra",
+        "name_hi": "महिला शक्ति केंद्र",
+        "ministry": "Ministry of Women & Child Development",
+        "categories": [
+            "women_child",
+            "service"
+        ],
+        "description_en": "One-stop support centers for women providing skill development, employment, digital literacy, health, and nutrition services.",
+        "description_hi": "महिलाओं को कौशल विकास, रोजगार, डिजिटल साक्षरता, स्वास्थ्य और पोषण सेवाएं प्रदान करने वाले वन-स्टॉप सहायता केंद्र।",
+        "eligibility": {
+            "age_min": 18,
+            "age_max": null,
+            "gender": "female",
+            "income_max_annual": null,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "All women, especially from rural and marginalized communities"
+        },
+        "benefits": {
+            "type": "service",
+            "amount": "Free services: skill training, digital literacy, health services",
+            "frequency": "Ongoing",
+            "details": "Community engagement through student volunteers, awareness campaigns"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": false,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": [
+                    "Any ID proof"
+                ]
+            },
+            {
+                "document_name": "No specific documents required",
+                "is_mandatory": false,
+                "where_to_obtain": "N/A",
+                "estimated_time": "N/A",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://wcd.nic.in",
+                "steps": [
+                    "Visit nearest Mahila Shakti Kendra",
+                    "No formal application needed"
+                ]
+            },
+            "offline": {
+                "office": "Block-level Mahila Shakti Kendra",
+                "steps": [
+                    "Visit nearest center",
+                    "Register for services",
+                    "Attend training/camps"
+                ]
+            },
+            "via_csc": false
+        },
+        "helpline": "181",
+        "official_url": "https://wcd.nic.in",
+        "launched_year": 2017,
+        "last_updated": "2024-01-15"
+    }
+]

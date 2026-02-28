@@ -1,0 +1,284 @@
+[
+    {
+        "scheme_id": "PMAY_GRAMIN_001",
+        "name_en": "PM Awas Yojana (Gramin)",
+        "name_hi": "पीएम आवास योजना (ग्रामीण)",
+        "ministry": "Ministry of Rural Development",
+        "categories": [
+            "housing",
+            "subsidy"
+        ],
+        "description_en": "Financial assistance of Rs 1.20-1.30 lakh to rural BPL families for construction of pucca house.",
+        "description_hi": "ग्रामीण बीपीएल परिवारों को पक्के मकान के निर्माण के लिए 1.20-1.30 लाख रुपये की वित्तीय सहायता।",
+        "eligibility": {
+            "age_min": 18,
+            "age_max": null,
+            "gender": "all",
+            "income_max_annual": 300000,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": true,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "Houseless or living in kutcha/dilapidated house, rural areas only"
+        },
+        "benefits": {
+            "type": "subsidy",
+            "amount": "Rs 1.20-1.30 lakh",
+            "frequency": "One-time",
+            "details": "Rs 1.20 lakh in plains, Rs 1.30 lakh in hilly/difficult areas + 90 days MGNREGA wages"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "BPL Card/SECC Data",
+                "is_mandatory": true,
+                "where_to_obtain": "Block Development Office",
+                "estimated_time": "15-30 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Bank Account",
+                "is_mandatory": true,
+                "where_to_obtain": "Any bank",
+                "estimated_time": "1-2 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "MGNREGA Job Card",
+                "is_mandatory": false,
+                "where_to_obtain": "Gram Panchayat",
+                "estimated_time": "7-15 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Land Ownership Proof",
+                "is_mandatory": true,
+                "where_to_obtain": "Revenue Department",
+                "estimated_time": "7-14 days",
+                "alternatives": [
+                    "Panchayat certification"
+                ]
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://pmayg.nic.in",
+                "steps": [
+                    "Check eligibility on AwaasSoft",
+                    "Apply through Gram Panchayat",
+                    "Verification by Block office"
+                ]
+            },
+            "offline": {
+                "office": "Gram Panchayat or Block Development Office",
+                "steps": [
+                    "Submit application to Gram Panchayat",
+                    "Verification by officials",
+                    "Approval and fund release in installments",
+                    "Build house as per specifications"
+                ]
+            },
+            "via_csc": true
+        },
+        "helpline": "1800-11-6446",
+        "official_url": "https://pmayg.nic.in",
+        "launched_year": 2016,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "PMAY_URBAN_001",
+        "name_en": "PM Awas Yojana (Urban)",
+        "name_hi": "पीएम आवास योजना (शहरी)",
+        "ministry": "Ministry of Housing & Urban Affairs",
+        "categories": [
+            "housing",
+            "subsidy"
+        ],
+        "description_en": "Interest subsidy on home loans for EWS/LIG/MIG categories in urban areas for affordable housing.",
+        "description_hi": "शहरी क्षेत्रों में ईडब्ल्यूएस/एलआईजी/एमआईजी श्रेणियों के लिए किफायती आवास हेतु होम लोन पर ब्याज सब्सिडी।",
+        "eligibility": {
+            "age_min": 18,
+            "age_max": null,
+            "gender": "all",
+            "income_max_annual": 1800000,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "EWS: income up to 3L, LIG: 3-6L, MIG-I: 6-12L, MIG-II: 12-18L"
+        },
+        "benefits": {
+            "type": "subsidy",
+            "amount": "Interest subsidy of 3-6.5% on home loan",
+            "frequency": "One-time",
+            "details": "EWS/LIG: 6.5% subsidy up to Rs 6L loan, MIG-I: 4% up to Rs 9L, MIG-II: 3% up to Rs 12L"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "Income Certificate",
+                "is_mandatory": true,
+                "where_to_obtain": "Collectorate",
+                "estimated_time": "7-15 days",
+                "alternatives": [
+                    "Salary slips",
+                    "IT Returns"
+                ]
+            },
+            {
+                "document_name": "Bank Account",
+                "is_mandatory": true,
+                "where_to_obtain": "Any bank",
+                "estimated_time": "1-2 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Property Documents",
+                "is_mandatory": true,
+                "where_to_obtain": "Builder/Developer",
+                "estimated_time": "Varies",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://pmaymis.gov.in",
+                "steps": [
+                    "Visit pmaymis.gov.in",
+                    "Check eligibility",
+                    "Apply through bank or online",
+                    "Upload documents"
+                ]
+            },
+            "offline": {
+                "office": "Bank or Urban Local Body",
+                "steps": [
+                    "Visit bank for home loan with PMAY subsidy",
+                    "Submit income proof and Aadhaar",
+                    "Bank processes subsidy through NHB/HUDCO"
+                ]
+            },
+            "via_csc": true
+        },
+        "helpline": "1800-11-3377",
+        "official_url": "https://pmaymis.gov.in",
+        "launched_year": 2015,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "IAY_001",
+        "name_en": "Indira Awaas Yojana (now PMAY-G)",
+        "name_hi": "इंदिरा आवास योजना (अब PMAY-G)",
+        "ministry": "Ministry of Rural Development",
+        "categories": [
+            "housing",
+            "subsidy"
+        ],
+        "description_en": "Housing assistance for BPL families in rural areas, now merged into PM Awas Yojana Gramin.",
+        "description_hi": "ग्रामीण क्षेत्रों में बीपीएल परिवारों के लिए आवास सहायता, अब पीएम आवास योजना ग्रामीण में विलय।",
+        "eligibility": {
+            "age_min": 18,
+            "age_max": null,
+            "gender": "all",
+            "income_max_annual": 200000,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "SC",
+                "ST"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": true,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "SC/ST BPL families, freed bonded laborers, minorities in BPL"
+        },
+        "benefits": {
+            "type": "subsidy",
+            "amount": "Rs 75,000-1.30 lakh",
+            "frequency": "One-time",
+            "details": "Financial assistance for house construction in rural areas"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "BPL Card",
+                "is_mandatory": true,
+                "where_to_obtain": "Block Office",
+                "estimated_time": "15-30 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Caste Certificate",
+                "is_mandatory": true,
+                "where_to_obtain": "Tehsildar Office",
+                "estimated_time": "7-14 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Bank Account",
+                "is_mandatory": true,
+                "where_to_obtain": "Any bank",
+                "estimated_time": "1-2 days",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://pmayg.nic.in",
+                "steps": [
+                    "Apply through Gram Panchayat",
+                    "Selection from SECC/BPL list"
+                ]
+            },
+            "offline": {
+                "office": "Gram Panchayat",
+                "steps": [
+                    "Submit application to Sarpanch",
+                    "Verification",
+                    "Selection through Gram Sabha",
+                    "Fund release"
+                ]
+            },
+            "via_csc": true
+        },
+        "helpline": "1800-11-6446",
+        "official_url": "https://pmayg.nic.in",
+        "launched_year": 1985,
+        "last_updated": "2024-01-15"
+    }
+]

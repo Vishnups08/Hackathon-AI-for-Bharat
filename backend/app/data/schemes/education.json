@@ -1,0 +1,433 @@
+[
+    {
+        "scheme_id": "PM_VIDYALAKSHMI_001",
+        "name_en": "PM Vidya Lakshmi Education Loan",
+        "name_hi": "पीएम विद्या लक्ष्मी शिक्षा ऋण",
+        "ministry": "Ministry of Finance",
+        "categories": [
+            "education",
+            "loan"
+        ],
+        "description_en": "Single portal for students to apply for education loans from multiple banks for higher education in India and abroad.",
+        "description_hi": "छात्रों को भारत और विदेश में उच्च शिक्षा के लिए कई बैंकों से शिक्षा ऋण आवेदन हेतु एकल पोर्टल।",
+        "eligibility": {
+            "age_min": 16,
+            "age_max": 35,
+            "gender": "all",
+            "income_max_annual": null,
+            "occupation": [
+                "student"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "Must have secured admission in recognized institution"
+        },
+        "benefits": {
+            "type": "loan",
+            "amount": "Up to Rs 20 lakh (India), Rs 30 lakh (abroad)",
+            "frequency": "One-time",
+            "details": "Interest subsidy for economically weaker sections"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "Admission Letter",
+                "is_mandatory": true,
+                "where_to_obtain": "Educational institution",
+                "estimated_time": "Varies",
+                "alternatives": []
+            },
+            {
+                "document_name": "Marksheets",
+                "is_mandatory": true,
+                "where_to_obtain": "Previous institution",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "Income Certificate",
+                "is_mandatory": true,
+                "where_to_obtain": "Collectorate",
+                "estimated_time": "7-15 days",
+                "alternatives": [
+                    "IT Returns"
+                ]
+            },
+            {
+                "document_name": "Bank Account",
+                "is_mandatory": true,
+                "where_to_obtain": "Any bank",
+                "estimated_time": "1-2 days",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://www.vidyalakshmi.co.in",
+                "steps": [
+                    "Register on portal",
+                    "Fill common form",
+                    "Select banks",
+                    "Upload documents",
+                    "Track status"
+                ]
+            },
+            "offline": {
+                "office": "Bank branch",
+                "steps": [
+                    "Visit bank with documents",
+                    "Fill education loan form",
+                    "Submit required documents",
+                    "Await approval"
+                ]
+            },
+            "via_csc": false
+        },
+        "helpline": "1800-180-1900",
+        "official_url": "https://www.vidyalakshmi.co.in",
+        "launched_year": 2015,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "NSP_001",
+        "name_en": "National Scholarship Portal",
+        "name_hi": "राष्ट्रीय छात्रवृत्ति पोर्टल",
+        "ministry": "Ministry of Electronics & IT",
+        "categories": [
+            "education",
+            "cash_transfer"
+        ],
+        "description_en": "Unified portal for various central and state government scholarships for students from pre-matric to post-doctoral level.",
+        "description_hi": "प्री-मैट्रिक से पोस्ट-डॉक्टरल स्तर तक के छात्रों के लिए विभिन्न केंद्र और राज्य सरकार छात्रवृत्तियों का एकीकृत पोर्टल।",
+        "eligibility": {
+            "age_min": null,
+            "age_max": 35,
+            "gender": "all",
+            "income_max_annual": 600000,
+            "occupation": [
+                "student"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "Students studying in recognized institutions, income criteria vary by scholarship"
+        },
+        "benefits": {
+            "type": "cash_transfer",
+            "amount": "Rs 1,000 to Rs 75,000 per year (varies by scholarship)",
+            "frequency": "Annual",
+            "details": "Multiple scholarships: Pre-matric, Post-matric, Merit-cum-Means, Top Class"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "Income Certificate",
+                "is_mandatory": true,
+                "where_to_obtain": "Collectorate/CSC",
+                "estimated_time": "7-15 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Caste Certificate",
+                "is_mandatory": false,
+                "where_to_obtain": "Tehsildar Office",
+                "estimated_time": "7-14 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Marksheets",
+                "is_mandatory": true,
+                "where_to_obtain": "Previous institution",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "Bank Account",
+                "is_mandatory": true,
+                "where_to_obtain": "Any bank",
+                "estimated_time": "1-2 days",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://scholarships.gov.in",
+                "steps": [
+                    "Register on NSP with Aadhaar",
+                    "Select scholarship",
+                    "Fill form",
+                    "Upload documents",
+                    "Submit before deadline"
+                ]
+            },
+            "offline": {
+                "office": "Educational institution",
+                "steps": [
+                    "Get form from institution",
+                    "Fill with required details",
+                    "Submit to institution",
+                    "Institution verifies and forwards"
+                ]
+            },
+            "via_csc": true
+        },
+        "helpline": "0120-6619540",
+        "official_url": "https://scholarships.gov.in",
+        "launched_year": 2015,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "PMKVY_001",
+        "name_en": "PM Kaushal Vikas Yojana (PMKVY)",
+        "name_hi": "पीएम कौशल विकास योजना",
+        "ministry": "Ministry of Skill Development & Entrepreneurship",
+        "categories": [
+            "education",
+            "training"
+        ],
+        "description_en": "Free short-term skill training with industry-recognized certification and placement support for youth.",
+        "description_hi": "युवाओं के लिए उद्योग-मान्यता प्राप्त प्रमाणन और प्लेसमेंट सहायता के साथ मुफ्त अल्पकालिक कौशल प्रशिक्षण।",
+        "eligibility": {
+            "age_min": 15,
+            "age_max": 45,
+            "gender": "all",
+            "income_max_annual": null,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "Indian youth, school/college dropouts, unemployed"
+        },
+        "benefits": {
+            "type": "training",
+            "amount": "Free training + Rs 8,000 reward on certification",
+            "frequency": "One-time",
+            "details": "200-600 hour courses in 40+ sectors, NSQF-aligned certification"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "Bank Account",
+                "is_mandatory": true,
+                "where_to_obtain": "Any bank",
+                "estimated_time": "1-2 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Educational Certificate",
+                "is_mandatory": false,
+                "where_to_obtain": "Previous school",
+                "estimated_time": "Available",
+                "alternatives": [
+                    "Self-declaration"
+                ]
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://pmkvyofficial.org",
+                "steps": [
+                    "Visit portal",
+                    "Find training center",
+                    "Register",
+                    "Attend training",
+                    "Appear for assessment"
+                ]
+            },
+            "offline": {
+                "office": "PMKVY Training Center",
+                "steps": [
+                    "Visit nearest training center",
+                    "Register with Aadhaar",
+                    "Attend training",
+                    "Get certified"
+                ]
+            },
+            "via_csc": true
+        },
+        "helpline": "1800-123-9626",
+        "official_url": "https://pmkvyofficial.org",
+        "launched_year": 2015,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "DIGITAL_INDIA_001",
+        "name_en": "Digital India - PMGDISHA",
+        "name_hi": "डिजिटल इंडिया - पीएमजीदिशा",
+        "ministry": "Ministry of Electronics & IT",
+        "categories": [
+            "education",
+            "training"
+        ],
+        "description_en": "Free digital literacy training to make one person in every household digitally literate.",
+        "description_hi": "प्रत्येक घर में एक व्यक्ति को डिजिटल रूप से साक्षर बनाने के लिए मुफ्त डिजिटल साक्षरता प्रशिक्षण।",
+        "eligibility": {
+            "age_min": 14,
+            "age_max": 60,
+            "gender": "all",
+            "income_max_annual": null,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "One person per household who is not digitally literate"
+        },
+        "benefits": {
+            "type": "training",
+            "amount": "Free 20-hour digital literacy course",
+            "frequency": "One-time",
+            "details": "Learn to use computer, internet, digital payments, government services online"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://pmgdisha.in",
+                "steps": [
+                    "Visit portal",
+                    "Find training center",
+                    "Register",
+                    "Attend 20-hour course"
+                ]
+            },
+            "offline": {
+                "office": "CSC Center or Training Center",
+                "steps": [
+                    "Visit CSC center",
+                    "Register with Aadhaar",
+                    "Complete training",
+                    "Get certificate"
+                ]
+            },
+            "via_csc": true
+        },
+        "helpline": "1800-3000-3468",
+        "official_url": "https://pmgdisha.in",
+        "launched_year": 2017,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "BBBP_001",
+        "name_en": "Beti Bachao Beti Padhao",
+        "name_hi": "बेटी बचाओ बेटी पढ़ाओ",
+        "ministry": "Ministry of Women & Child Development",
+        "categories": [
+            "education",
+            "women"
+        ],
+        "description_en": "National campaign to address declining child sex ratio and promote education of girl children.",
+        "description_hi": "घटते बाल लिंगानुपात को संबोधित करने और बालिकाओं की शिक्षा को बढ़ावा देने के लिए राष्ट्रीय अभियान।",
+        "eligibility": {
+            "age_min": null,
+            "age_max": 10,
+            "gender": "female",
+            "income_max_annual": null,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "Girl children, awareness and education campaign"
+        },
+        "benefits": {
+            "type": "service",
+            "amount": "Awareness + institutional support for girl education",
+            "frequency": "Ongoing",
+            "details": "Education support, institutional delivery incentives, awareness campaigns"
+        },
+        "documents_required": [
+            {
+                "document_name": "Birth Certificate",
+                "is_mandatory": true,
+                "where_to_obtain": "Municipal office",
+                "estimated_time": "7-14 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Aadhaar Card (Parent)",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://wcd.nic.in",
+                "steps": [
+                    "Contact Anganwadi center",
+                    "Register girl child"
+                ]
+            },
+            "offline": {
+                "office": "Anganwadi Center or District WCD Office",
+                "steps": [
+                    "Visit Anganwadi center",
+                    "Register girl child",
+                    "Avail education support"
+                ]
+            },
+            "via_csc": false
+        },
+        "helpline": "181",
+        "official_url": "https://wcd.nic.in/bbbp",
+        "launched_year": 2015,
+        "last_updated": "2024-01-15"
+    }
+]

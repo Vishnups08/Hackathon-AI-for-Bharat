@@ -1,0 +1,195 @@
+[
+  {
+    "scheme_id": "PM_KISAN_001",
+    "name_en": "PM-KISAN Samman Nidhi",
+    "name_hi": "पीएम-किसान सम्मान निधि",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "categories": ["agriculture", "cash_transfer"],
+    "description_en": "Income support of Rs 6,000 per year in three equal installments to all land holding farmer families.",
+    "description_hi": "सभी भूमिधारक किसान परिवारों को तीन समान किस्तों में प्रति वर्ष 6,000 रुपये की आय सहायता।",
+    "eligibility": {
+      "age_min": 18, "age_max": null, "gender": "all",
+      "income_max_annual": null, "occupation": ["farmer"],
+      "category": ["all"], "states": ["all"],
+      "is_bpl_required": false, "land_holding_max_hectares": null,
+      "additional_criteria": "Must be a land-holding farmer family"
+    },
+    "benefits": {
+      "type": "cash_transfer", "amount": "Rs 6,000 per year",
+      "frequency": "Three installments of Rs 2,000 each",
+      "details": "Direct bank transfer every 4 months"
+    },
+    "documents_required": [
+      {"document_name": "Aadhaar Card", "is_mandatory": true, "where_to_obtain": "UIDAI Center or Post Office", "estimated_time": "Already available if enrolled", "alternatives": []},
+      {"document_name": "Land Ownership Records", "is_mandatory": true, "where_to_obtain": "Local Patwari or Tehsildar Office", "estimated_time": "3-7 working days", "alternatives": ["Jamabandi", "Khatauni"]},
+      {"document_name": "Bank Account with IFSC", "is_mandatory": true, "where_to_obtain": "Any nationalized bank", "estimated_time": "1-2 days for new account", "alternatives": []},
+      {"document_name": "Mobile Number", "is_mandatory": true, "where_to_obtain": "Any telecom provider", "estimated_time": "Same day", "alternatives": []},
+      {"document_name": "Income Certificate", "is_mandatory": false, "where_to_obtain": "District Collectorate or CSC Center", "estimated_time": "7-15 working days", "alternatives": ["Self-declaration"]}
+    ],
+    "application_process": {
+      "online": {"portal_url": "https://pmkisan.gov.in", "steps": ["Visit pmkisan.gov.in", "Click New Farmer Registration", "Enter Aadhaar number", "Fill personal and bank details", "Upload land records", "Submit application"]},
+      "offline": {"office": "Local Agriculture Office or CSC Center", "steps": ["Visit nearest CSC center", "Carry all required documents", "CSC operator will fill the form", "Get acknowledgment receipt"]},
+      "via_csc": true
+    },
+    "helpline": "155261", "official_url": "https://pmkisan.gov.in", "launched_year": 2019, "last_updated": "2024-01-15"
+  },
+  {
+    "scheme_id": "PM_FASAL_BIMA_001",
+    "name_en": "PM Fasal Bima Yojana",
+    "name_hi": "पीएम फसल बीमा योजना",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "categories": ["agriculture", "insurance"],
+    "description_en": "Comprehensive crop insurance scheme providing financial support to farmers in case of crop loss due to natural calamities, pests and diseases.",
+    "description_hi": "प्राकृतिक आपदाओं, कीटों और रोगों के कारण फसल हानि की स्थिति में किसानों को वित्तीय सहायता प्रदान करने वाली व्यापक फसल बीमा योजना।",
+    "eligibility": {
+      "age_min": 18, "age_max": null, "gender": "all",
+      "income_max_annual": null, "occupation": ["farmer"],
+      "category": ["all"], "states": ["all"],
+      "is_bpl_required": false, "land_holding_max_hectares": null,
+      "additional_criteria": "All farmers including sharecroppers and tenant farmers"
+    },
+    "benefits": {
+      "type": "insurance", "amount": "Full insured sum on crop loss",
+      "frequency": "Per crop season", "details": "Premium: 2% for Kharif, 1.5% for Rabi crops. Government pays remaining premium."
+    },
+    "documents_required": [
+      {"document_name": "Aadhaar Card", "is_mandatory": true, "where_to_obtain": "UIDAI Center", "estimated_time": "Available if enrolled", "alternatives": []},
+      {"document_name": "Land Records", "is_mandatory": true, "where_to_obtain": "Patwari Office", "estimated_time": "3-7 days", "alternatives": []},
+      {"document_name": "Bank Account", "is_mandatory": true, "where_to_obtain": "Any bank", "estimated_time": "1-2 days", "alternatives": []},
+      {"document_name": "Sowing Certificate", "is_mandatory": true, "where_to_obtain": "Agriculture Department", "estimated_time": "5-10 days", "alternatives": []},
+      {"document_name": "Land Lease Agreement", "is_mandatory": false, "where_to_obtain": "Revenue Office", "estimated_time": "7-14 days", "alternatives": ["Tenant farming proof"]}
+    ],
+    "application_process": {
+      "online": {"portal_url": "https://pmfby.gov.in", "steps": ["Visit pmfby.gov.in", "Register with Aadhaar", "Select crop and area", "Pay premium", "Submit"]},
+      "offline": {"office": "Bank branch or CSC Center", "steps": ["Visit bank with documents", "Fill application form", "Pay premium", "Get policy receipt"]},
+      "via_csc": true
+    },
+    "helpline": "1800-180-1551", "official_url": "https://pmfby.gov.in", "launched_year": 2016, "last_updated": "2024-01-15"
+  },
+  {
+    "scheme_id": "KCC_001",
+    "name_en": "Kisan Credit Card",
+    "name_hi": "किसान क्रेडिट कार्ड",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "categories": ["agriculture", "loan"],
+    "description_en": "Provides farmers with timely access to credit for agricultural needs at low interest rates, up to Rs 3 lakh.",
+    "description_hi": "किसानों को कम ब्याज दरों पर कृषि जरूरतों के लिए 3 लाख रुपये तक समय पर ऋण प्रदान करता है।",
+    "eligibility": {
+      "age_min": 18, "age_max": 75, "gender": "all",
+      "income_max_annual": null, "occupation": ["farmer"],
+      "category": ["all"], "states": ["all"],
+      "is_bpl_required": false, "land_holding_max_hectares": null,
+      "additional_criteria": "All farmers, including tenant farmers and sharecroppers"
+    },
+    "benefits": {
+      "type": "loan", "amount": "Up to Rs 3 lakh at 4% interest",
+      "frequency": "Annual renewal", "details": "7% interest with 3% government subsidy for timely repayment"
+    },
+    "documents_required": [
+      {"document_name": "Aadhaar Card", "is_mandatory": true, "where_to_obtain": "UIDAI Center", "estimated_time": "Available", "alternatives": []},
+      {"document_name": "Land Records", "is_mandatory": true, "where_to_obtain": "Patwari Office", "estimated_time": "3-7 days", "alternatives": []},
+      {"document_name": "Passport Size Photos", "is_mandatory": true, "where_to_obtain": "Photo studio", "estimated_time": "Same day", "alternatives": []},
+      {"document_name": "Bank Account", "is_mandatory": true, "where_to_obtain": "Any bank", "estimated_time": "1-2 days", "alternatives": []},
+      {"document_name": "Income Certificate", "is_mandatory": false, "where_to_obtain": "Collectorate/CSC", "estimated_time": "7-15 days", "alternatives": []},
+      {"document_name": "Crop Sowing Details", "is_mandatory": true, "where_to_obtain": "Agriculture Department", "estimated_time": "3-5 days", "alternatives": []}
+    ],
+    "application_process": {
+      "online": {"portal_url": "https://pmkisan.gov.in/KCC", "steps": ["Apply via PM-KISAN portal or bank website", "Fill KCC application", "Upload documents", "Submit"]},
+      "offline": {"office": "Nearest bank branch", "steps": ["Visit bank with documents", "Fill KCC form", "Submit documents", "Card issued in 14 days"]},
+      "via_csc": true
+    },
+    "helpline": "155261", "official_url": "https://pmkisan.gov.in", "launched_year": 1998, "last_updated": "2024-01-15"
+  },
+  {
+    "scheme_id": "SOIL_HEALTH_001",
+    "name_en": "Soil Health Card Scheme",
+    "name_hi": "मृदा स्वास्थ्य कार्ड योजना",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "categories": ["agriculture", "service"],
+    "description_en": "Provides soil health cards to farmers with crop-wise recommendations for nutrients and fertilizers.",
+    "description_hi": "किसानों को फसलवार पोषक तत्वों और उर्वरकों की सिफारिशों के साथ मृदा स्वास्थ्य कार्ड प्रदान करता है।",
+    "eligibility": {
+      "age_min": 18, "age_max": null, "gender": "all",
+      "income_max_annual": null, "occupation": ["farmer"],
+      "category": ["all"], "states": ["all"],
+      "is_bpl_required": false, "land_holding_max_hectares": null,
+      "additional_criteria": "Any farmer with cultivable land"
+    },
+    "benefits": {
+      "type": "service", "amount": "Free soil testing and report",
+      "frequency": "Once every 3 years", "details": "Detailed soil analysis with fertilizer recommendations"
+    },
+    "documents_required": [
+      {"document_name": "Aadhaar Card", "is_mandatory": true, "where_to_obtain": "UIDAI Center", "estimated_time": "Available", "alternatives": ["Voter ID"]},
+      {"document_name": "Land Records", "is_mandatory": true, "where_to_obtain": "Patwari Office", "estimated_time": "3-7 days", "alternatives": []}
+    ],
+    "application_process": {
+      "online": {"portal_url": "https://soilhealth.dac.gov.in", "steps": ["Visit portal", "Register", "Request soil testing", "Collect sample", "View report online"]},
+      "offline": {"office": "Agriculture Department or Krishi Vigyan Kendra", "steps": ["Visit local agriculture office", "Request soil testing", "Provide soil sample", "Collect soil health card"]},
+      "via_csc": true
+    },
+    "helpline": "1800-180-1551", "official_url": "https://soilhealth.dac.gov.in", "launched_year": 2015, "last_updated": "2024-01-15"
+  },
+  {
+    "scheme_id": "PM_SINCHAI_001",
+    "name_en": "PM Krishi Sinchai Yojana",
+    "name_hi": "पीएम कृषि सिंचाई योजना",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "categories": ["agriculture", "subsidy"],
+    "description_en": "Provides subsidies for micro irrigation systems like drip and sprinkler irrigation to improve water use efficiency.",
+    "description_hi": "जल उपयोग दक्षता में सुधार के लिए ड्रिप और स्प्रिंकलर सिंचाई जैसी सूक्ष्म सिंचाई प्रणालियों पर सब्सिडी।",
+    "eligibility": {
+      "age_min": 18, "age_max": null, "gender": "all",
+      "income_max_annual": null, "occupation": ["farmer"],
+      "category": ["all"], "states": ["all"],
+      "is_bpl_required": false, "land_holding_max_hectares": null,
+      "additional_criteria": "Farmers with irrigable land"
+    },
+    "benefits": {
+      "type": "subsidy", "amount": "55-100% subsidy on micro irrigation",
+      "frequency": "One-time", "details": "Small/marginal farmers get 55% subsidy, other farmers 45%"
+    },
+    "documents_required": [
+      {"document_name": "Aadhaar Card", "is_mandatory": true, "where_to_obtain": "UIDAI Center", "estimated_time": "Available", "alternatives": []},
+      {"document_name": "Land Records", "is_mandatory": true, "where_to_obtain": "Patwari Office", "estimated_time": "3-7 days", "alternatives": []},
+      {"document_name": "Bank Account", "is_mandatory": true, "where_to_obtain": "Any bank", "estimated_time": "1-2 days", "alternatives": []},
+      {"document_name": "Caste Certificate", "is_mandatory": false, "where_to_obtain": "Tehsildar Office", "estimated_time": "7-14 days", "alternatives": []}
+    ],
+    "application_process": {
+      "online": {"portal_url": "https://pmksy.gov.in", "steps": ["Visit state agriculture portal", "Apply for micro irrigation subsidy", "Upload documents", "Submit"]},
+      "offline": {"office": "District Agriculture Office", "steps": ["Visit district agriculture office", "Fill subsidy application", "Submit documents", "Inspection and approval"]},
+      "via_csc": true
+    },
+    "helpline": "1800-180-1551", "official_url": "https://pmksy.gov.in", "launched_year": 2015, "last_updated": "2024-01-15"
+  },
+  {
+    "scheme_id": "NMSA_001",
+    "name_en": "National Mission for Sustainable Agriculture",
+    "name_hi": "राष्ट्रीय सतत कृषि मिशन",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "categories": ["agriculture", "training"],
+    "description_en": "Promotes sustainable agriculture through climate-resilient farming practices, soil health management, and water conservation.",
+    "description_hi": "जलवायु-लचीली कृषि पद्धतियों, मृदा स्वास्थ्य प्रबंधन और जल संरक्षण के माध्यम से टिकाऊ कृषि को बढ़ावा देता है।",
+    "eligibility": {
+      "age_min": 18, "age_max": null, "gender": "all",
+      "income_max_annual": null, "occupation": ["farmer"],
+      "category": ["all"], "states": ["all"],
+      "is_bpl_required": false, "land_holding_max_hectares": null,
+      "additional_criteria": "Priority to rainfed area farmers"
+    },
+    "benefits": {
+      "type": "training", "amount": "Free training + input subsidies",
+      "frequency": "Annual", "details": "Training on climate-resilient practices, seed subsidies, organic farming support"
+    },
+    "documents_required": [
+      {"document_name": "Aadhaar Card", "is_mandatory": true, "where_to_obtain": "UIDAI Center", "estimated_time": "Available", "alternatives": []},
+      {"document_name": "Land Records", "is_mandatory": true, "where_to_obtain": "Patwari Office", "estimated_time": "3-7 days", "alternatives": []}
+    ],
+    "application_process": {
+      "online": {"portal_url": "https://nmsa.dac.gov.in", "steps": ["Visit state agriculture portal", "Apply under NMSA", "Submit documents"]},
+      "offline": {"office": "District Agriculture Office or KVK", "steps": ["Visit nearest KVK or agriculture office", "Express interest", "Enroll for training"]},
+      "via_csc": false
+    },
+    "helpline": "1800-180-1551", "official_url": "https://nmsa.dac.gov.in", "launched_year": 2014, "last_updated": "2024-01-15"
+  }
+]

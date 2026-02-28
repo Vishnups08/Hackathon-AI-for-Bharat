@@ -1,0 +1,432 @@
+[
+    {
+        "scheme_id": "AYUSHMAN_001",
+        "name_en": "Ayushman Bharat PM-JAY",
+        "name_hi": "आयुष्मान भारत पीएम-जय",
+        "ministry": "Ministry of Health & Family Welfare",
+        "categories": [
+            "health",
+            "insurance"
+        ],
+        "description_en": "Provides health insurance of Rs 5 lakh per family per year for secondary and tertiary hospitalization to poor and vulnerable families.",
+        "description_hi": "गरीब और कमजोर परिवारों को प्रति वर्ष प्रति परिवार 5 लाख रुपये का स्वास्थ्य बीमा।",
+        "eligibility": {
+            "age_min": null,
+            "age_max": null,
+            "gender": "all",
+            "income_max_annual": 300000,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "Based on SECC 2011 data, BPL families, and specific occupational categories"
+        },
+        "benefits": {
+            "type": "insurance",
+            "amount": "Rs 5 lakh per family per year",
+            "frequency": "Annual coverage",
+            "details": "Covers hospitalization, surgery, diagnostics, medicines at empaneled hospitals"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "Ration Card",
+                "is_mandatory": false,
+                "where_to_obtain": "Food & Civil Supplies Office",
+                "estimated_time": "15-30 days",
+                "alternatives": [
+                    "BPL Certificate"
+                ]
+            },
+            {
+                "document_name": "Mobile Number",
+                "is_mandatory": true,
+                "where_to_obtain": "Telecom provider",
+                "estimated_time": "Same day",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://pmjay.gov.in",
+                "steps": [
+                    "Visit pmjay.gov.in",
+                    "Check eligibility with mobile/Aadhaar",
+                    "Visit nearest empaneled hospital for e-card"
+                ]
+            },
+            "offline": {
+                "office": "Any empaneled hospital or Ayushman Mitra",
+                "steps": [
+                    "Visit hospital with Aadhaar",
+                    "Ayushman Mitra will check eligibility",
+                    "Get Ayushman card issued",
+                    "Avail cashless treatment"
+                ]
+            },
+            "via_csc": true
+        },
+        "helpline": "14555",
+        "official_url": "https://pmjay.gov.in",
+        "launched_year": 2018,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "JSY_001",
+        "name_en": "Janani Suraksha Yojana",
+        "name_hi": "जननी सुरक्षा योजना",
+        "ministry": "Ministry of Health & Family Welfare",
+        "categories": [
+            "health",
+            "cash_transfer",
+            "women"
+        ],
+        "description_en": "Cash incentive for pregnant women who deliver in government or accredited private health facilities.",
+        "description_hi": "सरकारी या मान्यता प्राप्त निजी स्वास्थ्य सुविधाओं में प्रसव कराने वाली गर्भवती महिलाओं को नकद प्रोत्साहन।",
+        "eligibility": {
+            "age_min": 19,
+            "age_max": null,
+            "gender": "female",
+            "income_max_annual": null,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": true,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "BPL pregnant women, institutional delivery"
+        },
+        "benefits": {
+            "type": "cash_transfer",
+            "amount": "Rs 700-1,400 per delivery",
+            "frequency": "Per delivery (up to 2 births)",
+            "details": "Rs 1,400 in rural LPS states, Rs 1,000 in urban LPS, Rs 700 in HPS states"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "BPL Card",
+                "is_mandatory": true,
+                "where_to_obtain": "Block Development Office",
+                "estimated_time": "15-30 days",
+                "alternatives": [
+                    "Ration Card (BPL)"
+                ]
+            },
+            {
+                "document_name": "Bank Account",
+                "is_mandatory": true,
+                "where_to_obtain": "Any bank",
+                "estimated_time": "1-2 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Pregnancy Registration",
+                "is_mandatory": true,
+                "where_to_obtain": "PHC/ANM/ASHA worker",
+                "estimated_time": "Same day",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://nhm.gov.in",
+                "steps": [
+                    "Register pregnancy at nearest PHC",
+                    "Get JSY card from ANM/ASHA",
+                    "Deliver at institution",
+                    "Receive payment"
+                ]
+            },
+            "offline": {
+                "office": "PHC, Sub-center, or Government Hospital",
+                "steps": [
+                    "Register with ASHA worker",
+                    "Get JSY registration",
+                    "Deliver at government hospital",
+                    "Receive cash incentive"
+                ]
+            },
+            "via_csc": false
+        },
+        "helpline": "104",
+        "official_url": "https://nhm.gov.in/jsy",
+        "launched_year": 2005,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "RSBY_001",
+        "name_en": "Rashtriya Swasthya Bima Yojana",
+        "name_hi": "राष्ट्रीय स्वास्थ्य बीमा योजना",
+        "ministry": "Ministry of Labour & Employment",
+        "categories": [
+            "health",
+            "insurance"
+        ],
+        "description_en": "Health insurance for BPL families and unorganized sector workers covering hospitalization up to Rs 30,000 per family.",
+        "description_hi": "बीपीएल परिवारों और असंगठित क्षेत्र के श्रमिकों के लिए प्रति परिवार 30,000 रुपये तक के अस्पताल में भर्ती कवरेज।",
+        "eligibility": {
+            "age_min": null,
+            "age_max": null,
+            "gender": "all",
+            "income_max_annual": 200000,
+            "occupation": [
+                "laborer",
+                "worker",
+                "daily_wage"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": true,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "BPL families, unorganized sector workers, domestic workers, rickshaw pullers, etc."
+        },
+        "benefits": {
+            "type": "insurance",
+            "amount": "Rs 30,000 per family per year",
+            "frequency": "Annual",
+            "details": "Cashless hospitalization, covers 5 family members, includes transport allowance"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": [
+                    "Voter ID"
+                ]
+            },
+            {
+                "document_name": "BPL Card",
+                "is_mandatory": true,
+                "where_to_obtain": "Block Development Office",
+                "estimated_time": "15-30 days",
+                "alternatives": [
+                    "Ration Card"
+                ]
+            },
+            {
+                "document_name": "Family Photo",
+                "is_mandatory": true,
+                "where_to_obtain": "Photo studio",
+                "estimated_time": "Same day",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://labour.gov.in",
+                "steps": [
+                    "Check eligibility on portal",
+                    "Visit enrollment center",
+                    "Get smart card issued"
+                ]
+            },
+            "offline": {
+                "office": "District enrollment center",
+                "steps": [
+                    "Visit with BPL card and Aadhaar",
+                    "Biometric enrollment",
+                    "Get RSBY smart card",
+                    "Use at empaneled hospitals"
+                ]
+            },
+            "via_csc": true
+        },
+        "helpline": "1800-111-565",
+        "official_url": "https://labour.gov.in/rsby",
+        "launched_year": 2008,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "PM_DIALYSIS_001",
+        "name_en": "PM National Dialysis Programme",
+        "name_hi": "पीएम राष्ट्रीय डायलिसिस कार्यक्रम",
+        "ministry": "Ministry of Health & Family Welfare",
+        "categories": [
+            "health",
+            "service"
+        ],
+        "description_en": "Free dialysis services for poor patients at district hospitals through PPP model.",
+        "description_hi": "पीपीपी मॉडल के माध्यम से जिला अस्पतालों में गरीब मरीजों के लिए मुफ्त डायलिसिस सेवाएं।",
+        "eligibility": {
+            "age_min": null,
+            "age_max": null,
+            "gender": "all",
+            "income_max_annual": 300000,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "Patients requiring regular dialysis, priority to BPL families"
+        },
+        "benefits": {
+            "type": "service",
+            "amount": "Free dialysis sessions",
+            "frequency": "As per medical requirement",
+            "details": "Free hemodialysis at district hospitals, free diagnostics"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "Doctor's Prescription",
+                "is_mandatory": true,
+                "where_to_obtain": "Government hospital",
+                "estimated_time": "Same day",
+                "alternatives": []
+            },
+            {
+                "document_name": "Income Certificate",
+                "is_mandatory": false,
+                "where_to_obtain": "Collectorate",
+                "estimated_time": "7-15 days",
+                "alternatives": [
+                    "BPL Card"
+                ]
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://nhm.gov.in",
+                "steps": [
+                    "Visit district hospital dialysis unit",
+                    "Show prescription and Aadhaar",
+                    "Get enrolled"
+                ]
+            },
+            "offline": {
+                "office": "District Hospital Dialysis Unit",
+                "steps": [
+                    "Get referral from doctor",
+                    "Visit district hospital",
+                    "Register with Aadhaar",
+                    "Start free dialysis"
+                ]
+            },
+            "via_csc": false
+        },
+        "helpline": "104",
+        "official_url": "https://nhm.gov.in",
+        "launched_year": 2016,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "PM_SURAKSHIT_001",
+        "name_en": "PM Surakshit Matritva Abhiyan",
+        "name_hi": "पीएम सुरक्षित मातृत्व अभियान",
+        "ministry": "Ministry of Health & Family Welfare",
+        "categories": [
+            "health",
+            "service",
+            "women"
+        ],
+        "description_en": "Free antenatal checkups for pregnant women on the 9th of every month at government facilities.",
+        "description_hi": "सरकारी सुविधाओं पर हर महीने की 9 तारीख को गर्भवती महिलाओं के लिए मुफ्त प्रसवपूर्व जांच।",
+        "eligibility": {
+            "age_min": 18,
+            "age_max": null,
+            "gender": "female",
+            "income_max_annual": null,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "All pregnant women"
+        },
+        "benefits": {
+            "type": "service",
+            "amount": "Free antenatal checkups",
+            "frequency": "Monthly (9th of every month)",
+            "details": "Free checkup by specialist doctor, ultrasound, blood tests"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": false,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": [
+                    "Any ID proof"
+                ]
+            },
+            {
+                "document_name": "Pregnancy Registration Card",
+                "is_mandatory": true,
+                "where_to_obtain": "PHC/ANM",
+                "estimated_time": "Same day",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://pmsma.nhp.gov.in",
+                "steps": [
+                    "Visit nearest PHC on 9th of month",
+                    "No online registration needed"
+                ]
+            },
+            "offline": {
+                "office": "Government Hospital or PHC",
+                "steps": [
+                    "Visit on 9th of any month",
+                    "Carry pregnancy card",
+                    "Get free checkup"
+                ]
+            },
+            "via_csc": false
+        },
+        "helpline": "104",
+        "official_url": "https://pmsma.nhp.gov.in",
+        "launched_year": 2016,
+        "last_updated": "2024-01-15"
+    }
+]

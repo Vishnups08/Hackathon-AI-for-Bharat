@@ -1,0 +1,346 @@
+[
+    {
+        "scheme_id": "PM_SYM_001",
+        "name_en": "PM Shram Yogi Maan-Dhan",
+        "name_hi": "पीएम श्रम योगी मान-धन",
+        "ministry": "Ministry of Labour & Employment",
+        "categories": [
+            "social_security",
+            "pension"
+        ],
+        "description_en": "Guaranteed monthly pension of Rs 3,000 after age 60 for unorganized sector workers with monthly income up to Rs 15,000.",
+        "description_hi": "15,000 रुपये तक मासिक आय वाले असंगठित क्षेत्र के श्रमिकों के लिए 60 वर्ष की आयु के बाद 3,000 रुपये मासिक पेंशन।",
+        "eligibility": {
+            "age_min": 18,
+            "age_max": 40,
+            "gender": "all",
+            "income_max_annual": 180000,
+            "occupation": [
+                "laborer",
+                "worker",
+                "daily_wage",
+                "vendor",
+                "domestic_worker",
+                "rickshaw_puller"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "Monthly income up to Rs 15,000, not covered under EPFO/ESIC/NPS"
+        },
+        "benefits": {
+            "type": "pension",
+            "amount": "Rs 3,000 per month after 60",
+            "frequency": "Monthly (after 60)",
+            "details": "Government matches worker's contribution equally"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "Bank Account",
+                "is_mandatory": true,
+                "where_to_obtain": "Any bank",
+                "estimated_time": "1-2 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Mobile Number",
+                "is_mandatory": true,
+                "where_to_obtain": "Telecom provider",
+                "estimated_time": "Same day",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://maandhan.in",
+                "steps": [
+                    "Visit maandhan.in",
+                    "Self-enrollment with Aadhaar",
+                    "Choose monthly contribution"
+                ]
+            },
+            "offline": {
+                "office": "CSC Center",
+                "steps": [
+                    "Visit CSC with Aadhaar",
+                    "Enrollment by VLE",
+                    "Set up auto-debit"
+                ]
+            },
+            "via_csc": true
+        },
+        "helpline": "1800-267-6888",
+        "official_url": "https://maandhan.in",
+        "launched_year": 2019,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "PM_KMD_001",
+        "name_en": "PM Kisan Maan-Dhan",
+        "name_hi": "पीएम किसान मान-धन",
+        "ministry": "Ministry of Agriculture & Farmers Welfare",
+        "categories": [
+            "social_security",
+            "pension"
+        ],
+        "description_en": "Monthly pension of Rs 3,000 after age 60 for small and marginal farmers with landholding up to 2 hectares.",
+        "description_hi": "2 हेक्टेयर तक भूमि वाले छोटे और सीमांत किसानों के लिए 60 वर्ष की आयु के बाद 3,000 रुपये मासिक पेंशन।",
+        "eligibility": {
+            "age_min": 18,
+            "age_max": 40,
+            "gender": "all",
+            "income_max_annual": null,
+            "occupation": [
+                "farmer"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": 2.0,
+            "additional_criteria": "Small and marginal farmers with cultivable land up to 2 hectares"
+        },
+        "benefits": {
+            "type": "pension",
+            "amount": "Rs 3,000 per month after 60",
+            "frequency": "Monthly (after 60)",
+            "details": "Contribution: Rs 55-200/month, government matches equally"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "Land Records",
+                "is_mandatory": true,
+                "where_to_obtain": "Patwari Office",
+                "estimated_time": "3-7 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Bank Account",
+                "is_mandatory": true,
+                "where_to_obtain": "Any bank",
+                "estimated_time": "1-2 days",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://maandhan.in",
+                "steps": [
+                    "Visit maandhan.in/pmkmy",
+                    "Self-enroll with Aadhaar",
+                    "Submit land records"
+                ]
+            },
+            "offline": {
+                "office": "CSC Center",
+                "steps": [
+                    "Visit CSC with Aadhaar and land records",
+                    "Enrollment by VLE",
+                    "Set up contribution"
+                ]
+            },
+            "via_csc": true
+        },
+        "helpline": "1800-267-6888",
+        "official_url": "https://maandhan.in/pmkmy",
+        "launched_year": 2019,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "NSAP_001",
+        "name_en": "National Social Assistance Programme",
+        "name_hi": "राष्ट्रीय सामाजिक सहायता कार्यक्रम",
+        "ministry": "Ministry of Rural Development",
+        "categories": [
+            "social_security",
+            "pension",
+            "cash_transfer"
+        ],
+        "description_en": "Monthly pension for elderly (60+), widows, and persons with disabilities from BPL families.",
+        "description_hi": "बीपीएल परिवारों से वृद्धों (60+), विधवाओं और दिव्यांग व्यक्तियों के लिए मासिक पेंशन।",
+        "eligibility": {
+            "age_min": 60,
+            "age_max": null,
+            "gender": "all",
+            "income_max_annual": 200000,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": true,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "BPL elderly (60+), BPL widows (40-79), Persons with 80%+ disability"
+        },
+        "benefits": {
+            "type": "cash_transfer",
+            "amount": "Rs 300-500 per month (central) + state top-up",
+            "frequency": "Monthly",
+            "details": "IGNOAPS: Rs 300 (60-79), Rs 500 (80+). State adds own contribution."
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "Age Proof",
+                "is_mandatory": true,
+                "where_to_obtain": "School certificate or medical certificate",
+                "estimated_time": "Available",
+                "alternatives": [
+                    "Voter ID"
+                ]
+            },
+            {
+                "document_name": "BPL Card",
+                "is_mandatory": true,
+                "where_to_obtain": "Block Office",
+                "estimated_time": "15-30 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Bank Account",
+                "is_mandatory": true,
+                "where_to_obtain": "Any bank",
+                "estimated_time": "1-2 days",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://nsap.nic.in",
+                "steps": [
+                    "Visit state social welfare portal",
+                    "Apply online",
+                    "Upload documents"
+                ]
+            },
+            "offline": {
+                "office": "Block Development Office or Gram Panchayat",
+                "steps": [
+                    "Submit application to Sarpanch or BDO",
+                    "Verification by officials",
+                    "Approval and pension starts"
+                ]
+            },
+            "via_csc": true
+        },
+        "helpline": "1800-111-555",
+        "official_url": "https://nsap.nic.in",
+        "launched_year": 1995,
+        "last_updated": "2024-01-15"
+    },
+    {
+        "scheme_id": "PMJJBY_001",
+        "name_en": "PM Jeevan Jyoti Bima Yojana",
+        "name_hi": "पीएम जीवन ज्योति बीमा योजना",
+        "ministry": "Ministry of Finance",
+        "categories": [
+            "social_security",
+            "insurance"
+        ],
+        "description_en": "Life insurance of Rs 2 lakh at a premium of just Rs 436 per year for bank account holders aged 18-50.",
+        "description_hi": "18-50 वर्ष के बैंक खाताधारकों के लिए केवल 436 रुपये प्रति वर्ष के प्रीमियम पर 2 लाख रुपये का जीवन बीमा।",
+        "eligibility": {
+            "age_min": 18,
+            "age_max": 50,
+            "gender": "all",
+            "income_max_annual": null,
+            "occupation": [
+                "all"
+            ],
+            "category": [
+                "all"
+            ],
+            "states": [
+                "all"
+            ],
+            "is_bpl_required": false,
+            "land_holding_max_hectares": null,
+            "additional_criteria": "Must have savings bank account, auto-debit consent required"
+        },
+        "benefits": {
+            "type": "insurance",
+            "amount": "Rs 2 lakh life insurance cover",
+            "frequency": "Annual renewal (Rs 436/year)",
+            "details": "Rs 2 lakh paid to nominee on death of insured person from any cause"
+        },
+        "documents_required": [
+            {
+                "document_name": "Aadhaar Card",
+                "is_mandatory": true,
+                "where_to_obtain": "UIDAI Center",
+                "estimated_time": "Available",
+                "alternatives": []
+            },
+            {
+                "document_name": "Bank Account",
+                "is_mandatory": true,
+                "where_to_obtain": "Any bank",
+                "estimated_time": "1-2 days",
+                "alternatives": []
+            },
+            {
+                "document_name": "Nominee Details",
+                "is_mandatory": true,
+                "where_to_obtain": "Self-declaration",
+                "estimated_time": "Same day",
+                "alternatives": []
+            }
+        ],
+        "application_process": {
+            "online": {
+                "portal_url": "https://jansuraksha.gov.in",
+                "steps": [
+                    "Apply via net banking",
+                    "Or visit bank branch",
+                    "Give auto-debit consent"
+                ]
+            },
+            "offline": {
+                "office": "Bank branch",
+                "steps": [
+                    "Visit bank",
+                    "Fill one-page form",
+                    "Give auto-debit consent",
+                    "Rs 436 debited annually"
+                ]
+            },
+            "via_csc": true
+        },
+        "helpline": "1800-180-1111",
+        "official_url": "https://jansuraksha.gov.in",
+        "launched_year": 2015,
+        "last_updated": "2024-01-15"
+    }
+]

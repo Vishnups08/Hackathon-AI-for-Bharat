@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { useStore } from '../stores/useStore';
 import { MessageSquare, Upload, List, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
+import IndiaMapSection from '../components/IndiaMapSection';
+import ScrollAnimationSection from '../components/ScrollAnimationSection';
 
 export default function Home() {
     const { language } = useStore();
@@ -112,35 +114,155 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* Feature Section */}
-            <div className="bg-gray-50 py-16 sm:py-24">
+            {/* Stats Bar — Communicates scale of impact */}
+            <div className="bg-gradient-to-r from-primary-700 via-primary-600 to-teal-600 py-10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="mt-10">
-                        <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
-                            {current.features.map((feature, index) => (
-                                <motion.div
-                                    key={feature.title}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                                    className="relative"
-                                >
-                                    <dt>
-                                        <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                                            <feature.icon className="h-6 w-6" aria-hidden="true" />
-                                        </div>
-                                        <p className="ml-16 text-lg leading-6 font-medium text-gray-900">{feature.title}</p>
-                                    </dt>
-                                    <dd className="mt-2 ml-16 text-base text-gray-500">
-                                        {feature.desc}
-                                    </dd>
-                                </motion.div>
-                            ))}
-                        </dl>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                        {[
+                            { value: '2,000+', label: language === 'hi' ? 'सरकारी योजनाएं' : 'Government Schemes' },
+                            { value: '₹14L Cr', label: language === 'hi' ? 'वार्षिक बजट आवंटन' : 'Annual Budget' },
+                            { value: '60%', label: language === 'hi' ? 'नागरिक अनजान हैं' : 'Citizens Unaware' },
+                            { value: '30+', label: language === 'hi' ? 'योजनाएं डेटाबेस में' : 'Schemes in Database' },
+                        ].map((stat, index) => (
+                            <motion.div
+                                key={stat.label}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1, duration: 0.4 }}
+                                className="text-center"
+                            >
+                                <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">{stat.value}</div>
+                                <div className="mt-1 text-sm text-primary-100 font-medium">{stat.label}</div>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </div>
+
+            {/* Feature Section */}
+            <div className="relative bg-gradient-to-b from-gray-50 to-white py-16 sm:py-24 overflow-hidden">
+                {/* Decorative background elements */}
+                <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+                    <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+                    <div className="absolute top-48 -right-24 w-96 h-96 bg-secondary-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+                </div>
+
+                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+                    <div className="text-center mb-16">
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-base font-semibold text-primary-600 tracking-wide uppercase"
+                        >
+                            {language === 'hi' ? 'प्रमुख विशेषताएं' : 'Key Features'}
+                        </motion.h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {current.features.map((feature, index) => (
+                            <motion.div
+                                key={feature.title}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1, duration: 0.5 }}
+                                className="relative bg-white pt-8 px-6 pb-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-primary-100 transition-all duration-300 transform hover:-translate-y-1 group"
+                            >
+                                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary-400 to-secondary-400 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div className="w-14 h-14 rounded-xl bg-primary-50 text-primary-600 flex items-center justify-center mb-6 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                                    <feature.icon className="h-7 w-7" aria-hidden="true" />
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors duration-300">
+                                    {feature.title}
+                                </h3>
+                                <p className="text-base text-gray-500 leading-relaxed">
+                                    {feature.desc}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* How It Works — 3-Step Flow */}
+            <div className="py-16 sm:py-24 bg-white border-t border-gray-100">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="text-base font-semibold text-primary-600 tracking-wide uppercase mb-2">
+                            {language === 'hi' ? 'कैसे काम करता है' : 'How It Works'}
+                        </h2>
+                        <p className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                            {language === 'hi' ? 'तीन आसान चरण' : 'Three Simple Steps'}
+                        </p>
+                    </motion.div>
+
+                    <div className="relative">
+                        {/* Connector line (desktop only) */}
+                        <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-primary-200 via-primary-400 to-primary-200"></div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                            {[
+                                {
+                                    step: '1',
+                                    title_en: 'Chat or Upload', title_hi: 'बातचीत करें या अपलोड करें',
+                                    desc_en: 'Tell us about yourself via a conversation or upload your Aadhaar/Ration Card.',
+                                    desc_hi: 'बातचीत से अपनी जानकारी दें या आधार कार्ड अपलोड करें।',
+                                    emoji: '💬'
+                                },
+                                {
+                                    step: '2',
+                                    title_en: 'AI Matches Schemes', title_hi: 'AI योजनाएं खोजता है',
+                                    desc_en: 'Our AI analyzes your profile against 30+ government schemes and provides a match score.',
+                                    desc_hi: 'हमारा AI आपकी प्रोफ़ाइल की 30+ सरकारी योजनाओं से तुलना करता है।',
+                                    emoji: '🤖'
+                                },
+                                {
+                                    step: '3',
+                                    title_en: 'Apply with Guidance', title_hi: 'आवेदन करें',
+                                    desc_en: 'Get step-by-step application guidance, missing document alerts, and scheme comparison.',
+                                    desc_hi: 'चरण-दर-चरण आवेदन मार्गदर्शन और दस्तावेज़ सूची प्राप्त करें।',
+                                    emoji: '✅'
+                                }
+                            ].map((item, idx) => (
+                                <motion.div
+                                    key={item.step}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.15, duration: 0.5 }}
+                                    className="text-center relative"
+                                >
+                                    <div className="w-24 h-24 rounded-full bg-primary-50 border-4 border-white shadow-lg mx-auto flex items-center justify-center mb-6 relative z-10">
+                                        <span className="text-4xl">{item.emoji}</span>
+                                    </div>
+                                    <div className="absolute top-2 right-1/2 translate-x-1/2 w-6 h-6 bg-primary-600 text-white rounded-full text-xs font-bold flex items-center justify-center z-20 shadow">
+                                        {item.step}
+                                    </div>
+                                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                                        {language === 'hi' ? item.title_hi : item.title_en}
+                                    </h3>
+                                    <p className="text-gray-500 text-sm leading-relaxed max-w-xs mx-auto">
+                                        {language === 'hi' ? item.desc_hi : item.desc_en}
+                                    </p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Nationwide Impact Map Section */}
+            <IndiaMapSection />
+
+            {/* Scroll Animation Sequence */}
+            <ScrollAnimationSection />
         </div>
     );
 }

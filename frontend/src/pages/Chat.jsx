@@ -2,14 +2,18 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../stores/useStore';
 import { api } from '../lib/api';
-import { Send, Upload, Mic, Loader2, FileCheck, Info } from 'lucide-react';
+import { Send, Upload, Mic, Loader2, FileCheck, Info, List as ListIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Chat() {
     const navigate = useNavigate();
     const [input, setInput] = useState('');
+    const [isRecording, setIsRecording] = useState(false);
+    const [isTranscribing, setIsTranscribing] = useState(false);
     const messagesEndRef = useRef(null);
     const fileInputRef = useRef(null);
+    const mediaRecorderRef = useRef(null);
+    const audioChunksRef = useRef([]);
 
     const {
         sessionId, language, profile, updateProfile,
@@ -23,6 +27,8 @@ export default function Chat() {
 
     const isHindi = language === 'hi';
 
+    const hasGreeted = useRef(false);
+
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
@@ -31,9 +37,10 @@ export default function Chat() {
         scrollToBottom();
     }, [chatHistory, isChatLoading]);
 
-    // Initial greeting if chat is empty
+    // Initial greeting — runs once only (guarded against StrictMode double-render)
     useEffect(() => {
-        if (chatHistory.length === 0) {
+        if (chatHistory.length === 0 && !hasGreeted.current) {
+            hasGreeted.current = true;
             const greeting = isHindi
                 ? "नमस्ते! मैं जन सहायक हूँ। मैं आपको सरकारी योजनाओं का लाभ उठाने में मदद करूँगा। क्या आप अपना नाम या कोई दस्तावेज़ (जैसे आधार कार्ड) अपलोड करना चाहेंगे?"
                 : "Hello! I am Jan Sahayak. I will help you discover government schemes. Would you like to tell me your name or upload a document like an Aadhaar card?";
@@ -48,7 +55,7 @@ export default function Chat() {
                 playVoice(greeting, language);
             }
         }
-    }, [chatHistory.length, language, isVoiceEnabled, addChatMessage, setSuggestedActions]);
+    }, []);
 
     const playVoice = async (text, lang) => {
         try {
@@ -127,6 +134,8 @@ export default function Chat() {
                 if (data.age) msg += `Age: ${data.age}\n`;
                 if (data.gender) msg += `Gender: ${data.gender}\n`;
                 if (data.document_number_masked) msg += `ID: ${data.document_number_masked}\n`;
+                if (data.address?.state) msg += `State: ${data.address.state}\n`;
+                if (data.address?.district) msg += `District: ${data.address.district}\n`;
 
                 addChatMessage({ role: 'assistant', content: msg });
 
@@ -160,13 +169,26 @@ export default function Chat() {
 
     const handleActionClick = async (action) => {
         if (action.type === 'continue_chat') {
-            // Focus input
-            document.getElementById('chat-input')?.focus();
+            const inputEl = document.getElementById('chat-input');
+            if (inputEl) {
+                inputEl.focus();
+                // If label is "My name is...", pre-fill it for better UX
+                if (action.label.includes('...') || action.label.includes('नाम')) {
+                    setInput(action.label.replace('...', ' '));
+                }
+            }
         } else if (action.type === 'upload_document') {
             fileInputRef.current?.click();
-        } else if (action.type === 'confirm_doc') {
-            setInput(isHindi ? "हाँ, जानकारी सही है" : "Yes, this is correct");
-            setTimeout(() => document.getElementById('chat-form')?.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true })), 100);
+        } else if (action.type === 'confirm_doc' || action.type === 'reject_doc') {
+            const val = action.label;
+            setInput(val);
+            // Small delay to ensure state update before triggering submit
+            setTimeout(() => {
+                const form = document.getElementById('chat-form');
+                if (form) {
+                    form.requestSubmit();
+                }
+            }, 50);
         } else if (action.type === 'find_schemes') {
             setChatLoading(true);
             try {
@@ -181,6 +203,62 @@ export default function Chat() {
             } finally {
                 setChatLoading(false);
             }
+        }
+    };
+
+    const startSpeechRecognition = async () => {
+        if (isRecording) {
+            if (mediaRecorderRef.current) {
+                mediaRecorderRef.current.stop();
+            }
+            return;
+        }
+
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            const mediaRecorder = new MediaRecorder(stream);
+            mediaRecorderRef.current = mediaRecorder;
+            audioChunksRef.current = [];
+
+            mediaRecorder.ondataavailable = (e) => {
+                if (e.data.size > 0) {
+                    audioChunksRef.current.push(e.data);
+                }
+            };
+
+            mediaRecorder.onstart = () => {
+                setIsRecording(true);
+            };
+
+            mediaRecorder.onstop = async () => {
+                setIsRecording(false);
+                const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
+                stream.getTracks().forEach(track => track.stop());
+
+                setIsTranscribing(true);
+                try {
+                    const res = await api.transcribeVoice(audioBlob, language);
+                    if (res && res.text) {
+                        setInput(prev => (prev + ' ' + res.text).trim());
+                    }
+                } catch (err) {
+                    console.error('Transcription error:', err);
+                    addChatMessage({
+                        role: 'assistant',
+                        content: isHindi ? 'ऑडियो प्रोसेस करने में समस्या हुई। कृपया पुनः प्रयास करें।' : 'Sorry, there was an error processing your audio. Please try again.'
+                    });
+                } finally {
+                    setIsTranscribing(false);
+                }
+            };
+
+            mediaRecorder.start();
+        } catch (err) {
+            console.error('Microphone access denied:', err);
+            addChatMessage({
+                role: 'assistant',
+                content: isHindi ? 'कृपया माइक्रोफ़ोन को अनुमति दें।' : 'Please allow microphone access.'
+            });
         }
     };
 
@@ -212,10 +290,43 @@ export default function Chat() {
                         className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
                         <div className={`max-w-[80%] rounded-2xl p-4 ${msg.role === 'user'
-                                ? 'bg-primary-600 text-white rounded-tr-none'
-                                : 'bg-white border border-gray-200 text-gray-800 rounded-tl-none shadow-sm pb-5 whitespace-pre-line'
+                            ? 'bg-primary-600 text-white rounded-tr-none'
+                            : 'bg-white border border-gray-200 text-gray-800 rounded-tl-none shadow-sm pb-5 whitespace-pre-line'
                             }`}>
-                            {msg.content}
+                            {msg.role === 'user' ? msg.content : (
+                                <div className="space-y-1">
+                                    {msg.content.split('\n').map((line, lineIdx) => {
+                                        // Simple markdown-ish bold and bullet handling
+                                        let processed = line;
+
+                                        // Bullet points
+                                        const isBullet = processed.trim().startsWith('*');
+                                        if (isBullet) {
+                                            processed = processed.replace(/^\*\s*/, '');
+                                        }
+
+                                        // Bold
+                                        const parts = processed.split(/(\*\*.*?\*\*)/g);
+                                        const element = (
+                                            <span key={lineIdx}>
+                                                {parts.map((part, pIdx) => {
+                                                    if (part.startsWith('**') && part.endsWith('**')) {
+                                                        return <strong key={pIdx} className="font-bold">{part.slice(2, -2)}</strong>;
+                                                    }
+                                                    return part;
+                                                })}
+                                            </span>
+                                        );
+
+                                        return (
+                                            <div key={lineIdx} className={isBullet ? "flex items-start" : ""}>
+                                                {isBullet && <span className="mr-2 text-primary-500">•</span>}
+                                                {element}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            )}
                         </div>
                     </motion.div>
                 ))}
@@ -228,6 +339,18 @@ export default function Chat() {
                         <div className="bg-white border border-gray-200 rounded-2xl rounded-tl-none p-4 shadow-sm flex space-x-2">
                             <Loader2 className="w-5 h-5 animate-spin text-primary-500" />
                             <span className="text-gray-500 text-sm">{isHindi ? 'टाइप कर रहा है...' : 'Thinking...'}</span>
+                        </div>
+                    </motion.div>
+                )}
+
+                {isTranscribing && (
+                    <motion.div
+                        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+                        className="flex justify-end"
+                    >
+                        <div className="bg-primary-50 border border-primary-200 rounded-2xl p-3 shadow-sm flex items-center space-x-2">
+                            <Loader2 className="w-4 h-4 animate-spin text-primary-500" />
+                            <span className="text-primary-700 text-sm">{isHindi ? 'आवाज़ को प्रोसेस कर रहा है...' : 'Transcribing voice...'}</span>
                         </div>
                     </motion.div>
                 )}
@@ -245,7 +368,7 @@ export default function Chat() {
                                 className="flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-sm font-medium border border-primary-200 hover:bg-primary-100 transition-colors"
                             >
                                 {action.type === 'upload_document' ? <Upload className="w-4 h-4 mr-2" /> : null}
-                                {action.type === 'find_schemes' ? <List className="w-4 h-4 mr-2" /> : null}
+                                {action.type === 'find_schemes' ? <ListIcon className="w-4 h-4 mr-2" /> : null}
                                 {action.label}
                             </button>
                         ))}
@@ -276,6 +399,15 @@ export default function Chat() {
                         <Upload className="w-6 h-6" />
                     </button>
 
+                    <button
+                        type="button"
+                        onClick={startSpeechRecognition}
+                        className={`p-3 rounded-full transition-colors ${isRecording ? 'text-red-600 bg-red-50 animate-pulse' : 'text-gray-500 hover:text-primary-600 hover:bg-primary-50'}`}
+                        title={isHindi ? "बोलकर टाइप करें" : "Voice Typing"}
+                    >
+                        <Mic className="w-6 h-6" />
+                    </button>
+
                     <div className="relative flex-1">
                         <input
                             id="chat-input"
@@ -284,16 +416,16 @@ export default function Chat() {
                             onChange={(e) => setInput(e.target.value)}
                             placeholder={isHindi ? "आप क्या जानना चाहते हैं?" : "Type your message..."}
                             className="w-full px-4 py-3 bg-gray-100 border-transparent rounded-full focus:bg-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
-                            disabled={isChatLoading}
+                            disabled={isChatLoading || isTranscribing}
                         />
                     </div>
 
                     <button
                         type="submit"
-                        disabled={!input.trim() || isChatLoading}
-                        className={`p-3 rounded-full flex items-center justify-center transition-colors ${!input.trim() || isChatLoading
-                                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                : 'bg-primary-600 text-white hover:bg-primary-700 shadow-sm'
+                        disabled={!input.trim() || isChatLoading || isTranscribing}
+                        className={`p-3 rounded-full flex items-center justify-center transition-colors ${!input.trim() || isChatLoading || isTranscribing
+                            ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                            : 'bg-primary-600 text-white hover:bg-primary-700 shadow-sm'
                             }`}
                     >
                         <Send className="w-6 h-6 ml-1" />

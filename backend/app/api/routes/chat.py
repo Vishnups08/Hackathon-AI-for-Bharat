@@ -36,15 +36,14 @@ async def chat(request: ChatRequest):
             chat_history=request.chat_history
         )
 
-        # Parse JSON response from Claude
+        # Parse JSON response from Claude (handling markdown blocks or surrounding text)
         try:
-            # Try to extract JSON from response (Claude sometimes wraps in markdown)
-            cleaned = raw_response.strip()
-            if cleaned.startswith("```"):
-                # Remove markdown code blocks
-                lines = cleaned.split("\n")
-                json_lines = [l for l in lines if not l.strip().startswith("```")]
-                cleaned = "\n".join(json_lines)
+            import re
+            match = re.search(r"(\{.*\})", raw_response, re.DOTALL)
+            if match:
+                cleaned = match.group(1).strip()
+            else:
+                cleaned = raw_response.strip()
             parsed = json.loads(cleaned)
         except json.JSONDecodeError:
             # Fallback: return raw message
@@ -69,7 +68,7 @@ async def chat(request: ChatRequest):
                 "profile_completeness": completeness,
                 "is_profile_complete": parsed.get("is_profile_complete", False),
                 "profile_summary": parsed.get("profile_summary"),
-                "suggested_actions": get_suggested_actions(completeness, parsed.get("is_profile_complete", False))
+                "suggested_actions": get_suggested_actions(updated_profile, parsed.get("is_profile_complete", False), request.language)
             }
         }
     except Exception as e:
@@ -86,13 +85,39 @@ def calculate_completeness(profile: dict) -> int:
     return int((filled / len(key_fields)) * 100)
 
 
-def get_suggested_actions(completeness: int, is_complete: bool) -> list:
-    """Generate context-aware action suggestions."""
+def get_suggested_actions(profile: dict, is_complete: bool, language: str) -> list:
+    """Generate context-aware action suggestions based on the profile state."""
     actions = []
-    if not is_complete:
-        actions.append({"type": "continue_chat", "label": "Continue answering"})
-        actions.append({"type": "upload_document", "label": "Upload Aadhaar to auto-fill"})
+    is_hi = language == "hi"
+
+    if is_complete:
+        # If complete, we need to confirm
+        actions.append({
+            "type": "find_schemes", 
+            "label": "योजनाएं खोजें" if is_hi else "Find eligible schemes"
+        })
+        actions.append({
+            "type": "continue_chat", 
+            "label": "हाँ, यह सही है" if is_hi else "Yes, this is correct"
+        })
+        actions.append({
+            "type": "continue_chat", 
+            "label": "नहीं, कुछ गलत है" if is_hi else "No, something is wrong"
+        })
     else:
-        actions.append({"type": "find_schemes", "label": "Find eligible schemes"})
-        actions.append({"type": "upload_document", "label": "Upload documents for readiness check"})
+        # Only suggest uploading if they haven't done it yet
+        if not profile.get("has_aadhaar"):
+            actions.append({
+                "type": "upload_document", 
+                "label": "आधार कार्ड अपलोड करें" if is_hi else "Upload Aadhaar to auto-fill"
+            })
+        
+        # Only show "Continue" if the profile is very bare (less than 30%)
+        # Otherwise, just let the conversation flow naturally
+        if calculate_completeness(profile) < 30:
+            actions.append({
+                "type": "continue_chat", 
+                "label": "बातचीत जारी रखें" if is_hi else "Continue answering"
+            })
+            
     return actions

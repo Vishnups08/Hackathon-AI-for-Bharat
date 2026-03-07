@@ -6,7 +6,7 @@ const initialSessionId = `session_${Math.random().toString(36).substring(2, 10)}
 export const useStore = create((set) => ({
     // Core App State
     sessionId: initialSessionId,
-    language: 'hi',
+    language: 'en',
     isVoiceEnabled: false,
 
     // Profile Data

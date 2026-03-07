@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useStore } from '../stores/useStore';
 import { api } from '../lib/api';
-import { ArrowLeft, CheckCircle, XCircle, Info, ExternalLink, Phone, Building } from 'lucide-react';
+import { ArrowLeft, CheckCircle, XCircle, Info, ExternalLink, Phone, Building, Globe } from 'lucide-react';
 
 export default function SchemeDetail() {
     const { id } = useParams();
@@ -150,7 +150,7 @@ export default function SchemeDetail() {
                                     {isHindi ? 'ऑनलाइन आवेदन' : 'Online Application'}
                                 </h3>
                                 <ol className="list-decimal pl-5 space-y-2 text-sm text-gray-700 mb-4">
-                                    {scheme.application_process.online.steps.map((step, idx) => (
+                                    {scheme.application_process.online.steps?.map((step, idx) => (
                                         <li key={idx} className="pl-1">{step}</li>
                                     ))}
                                 </ol>
@@ -182,7 +182,7 @@ export default function SchemeDetail() {
                                     </p>
                                 )}
                                 <ol className="list-decimal pl-5 space-y-2 text-sm text-gray-700">
-                                    {scheme.application_process.offline.steps.map((step, idx) => (
+                                    {scheme.application_process.offline.steps?.map((step, idx) => (
                                         <li key={idx} className="pl-1">{step}</li>
                                     ))}
                                 </ol>

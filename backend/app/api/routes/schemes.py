@@ -32,82 +32,119 @@ async def match_schemes(request: MatchRequest):
     Rule-based pre-filtering + LLM-powered scoring and ranking.
     """
     try:
-        # Step 1: Rule-based pre-filtering
-        candidates = rule_based_filter(request.profile, SCHEMES_CACHE)
+        print(f"🔍 DEBUG: Starting match_schemes for language: {request.language}")
+        print(f"🔍 DEBUG: Profile: {request.profile}")
+
+        # Step 1: Rule-based pre-filtering (use deepcopy to avoid polluting global cache)
+        import copy
+        candidates = copy.deepcopy(rule_based_filter(request.profile, SCHEMES_CACHE))
+        print(f"🔍 DEBUG: Found {len(candidates)} rule-based candidates")
 
         # Step 2: Calculate document readiness for each candidate
         for scheme in candidates:
-            scheme["document_readiness"] = calculate_document_readiness(
-                scheme, request.uploaded_documents, request.profile
-            )
+            try:
+                scheme["document_readiness"] = calculate_document_readiness(
+                    scheme, request.uploaded_documents or [], request.profile or {}
+                )
+            except Exception as doc_err:
+                print(f"⚠️ DEBUG: Error calculating readiness for {scheme.get('scheme_id')}: {doc_err}")
+                scheme["document_readiness"] = {"percentage": 0, "ready": 0, "total": 0, "documents": []}
 
         # Step 3: LLM-powered scoring and ranking
-        prompt = f"""User Profile: {json.dumps(request.profile, ensure_ascii=False)}
-User's uploaded documents: {json.dumps(request.uploaded_documents)}
+        # Prepare smaller data for LLM
+        schemes_data = []
+        for s in candidates:
+            schemes_data.append({
+                "scheme_id": s.get("scheme_id", "unknown"),
+                "name_en": s.get("name_en", "Unknown"),
+                "name_hi": s.get("name_hi", ""),
+                "description_en": s.get("description_en", ""),
+                "categories": s.get("categories", []),
+                "eligibility": s.get("eligibility", {}),
+                "benefits": s.get("benefits", {})
+            })
+
+        scored_schemes = []
+        if schemes_data:
+            prompt = f"""User Profile: {json.dumps(request.profile, ensure_ascii=False)}
+User's uploaded documents: {json.dumps(request.uploaded_documents or [])}
 User's query: "{request.query}"
 Language: {request.language}
 
 Pre-filtered candidate schemes ({len(candidates)} total):
-{json.dumps([{
-    "scheme_id": s["scheme_id"],
-    "name_en": s["name_en"],
-    "name_hi": s.get("name_hi", ""),
-    "description_en": s["description_en"],
-    "categories": s["categories"],
-    "eligibility": s["eligibility"],
-    "benefits": s["benefits"]
-} for s in candidates], ensure_ascii=False, indent=2)}
+{json.dumps(schemes_data, ensure_ascii=False, indent=2)}
 
-Score each scheme and rank them by eligibility and relevance."""
+Score each scheme and rank them by eligibility and relevance. 
+Income 0 means no income/unemployed.
+Return ONLY a valid JSON array of objects. Do not include markdown code blocks.
+"""
+            try:
+                print("🔍 DEBUG: Calling LLM for scheme scoring...")
+                raw_response = await invoke_claude(
+                    system_prompt=SYSTEM_PROMPT_SCHEME_MATCHING,
+                    user_message=prompt
+                )
+                
+                # Robust regex-based parsing
+                import re
+                match = re.search(r"(\[.*\])", raw_response, re.DOTALL)
+                if match:
+                    cleaned = match.group(1).strip()
+                    scored_schemes = json.loads(cleaned)
+                    print(f"🔍 DEBUG: LLM returned {len(scored_schemes)} scored schemes")
+                else:
+                    print("⚠️ DEBUG: No JSON array found in LLM response")
+                    raise ValueError("No JSON array in response")
 
-        raw_response = await invoke_claude(
-            system_prompt=SYSTEM_PROMPT_SCHEME_MATCHING,
-            user_message=prompt
-        )
-
-        # Parse LLM response
-        try:
-            cleaned = raw_response.strip()
-            if cleaned.startswith("```"):
-                lines = cleaned.split("\n")
-                json_lines = [l for l in lines if not l.strip().startswith("```")]
-                cleaned = "\n".join(json_lines)
-            scored_schemes = json.loads(cleaned)
-        except json.JSONDecodeError:
-            # Fallback: return candidates with default scores
-            scored_schemes = [{
-                "scheme_id": s["scheme_id"],
-                "name_en": s["name_en"],
-                "name_hi": s.get("name_hi", ""),
-                "eligibility_score": 75,
-                "eligibility_reasoning": "Matches basic criteria",
-                "benefit_amount": s["benefits"]["amount"],
-                "benefit_type": s["benefits"]["type"],
-                "category": s["categories"][0] if s["categories"] else "",
-                "recommended_order": i + 1
-            } for i, s in enumerate(candidates)]
+            except Exception as llm_err:
+                print(f"⚠️ DEBUG: LLM matching failed: {llm_err}. Using fallback.")
+                # Fallback: manually convert all candidates to scored format
+                for i, s in enumerate(candidates):
+                    scored_schemes.append({
+                        "scheme_id": s.get("scheme_id", "unknown"),
+                        "name_en": s.get("name_en", "Unknown"),
+                        "name_hi": s.get("name_hi", ""),
+                        "eligibility_score": 85 if i < 3 else 70,
+                        "eligibility_reasoning": "Matching based on profile criteria.",
+                        "benefit_amount": s.get("benefits", {}).get("amount", "As per norms"),
+                        "benefit_type": s.get("benefits", {}).get("type", "Grant"),
+                        "category": s.get("categories", ["General"])[0],
+                        "recommended_order": i + 1
+                    })
+        else:
+            print("🔍 DEBUG: No candidates to score.")
 
         # Attach document readiness to scored schemes
         if isinstance(scored_schemes, list):
             for scored in scored_schemes:
                 sid = scored.get("scheme_id")
+                # Add default readiness if missing
+                scored["document_readiness"] = {"percentage": 0, "ready": 0, "total": 0}
                 for candidate in candidates:
-                    if candidate["scheme_id"] == sid:
+                    if candidate.get("scheme_id") == sid:
                         scored["document_readiness"] = candidate.get("document_readiness", {})
                         break
 
         # Generate AI summary
-        summary = generate_summary(scored_schemes, request.language, request.profile)
+        try:
+            summary = generate_summary(scored_schemes, request.language, request.profile)
+        except Exception as sum_err:
+            print(f"⚠️ DEBUG: Summary generation failed: {sum_err}")
+            summary = "Found eligible schemes for you."
 
+        print("✅ DEBUG: match_schemes completed successfully")
         return {
             "status": "success",
             "response": {
-                "total_matches": len(scored_schemes) if isinstance(scored_schemes, list) else 0,
-                "schemes": scored_schemes[:request.max_results] if isinstance(scored_schemes, list) else [],
+                "total_matches": len(scored_schemes),
+                "schemes": scored_schemes[:request.max_results],
                 "ai_summary": summary
             }
         }
     except Exception as e:
+        print(f"❌ CRITICAL: Scheme matching error: {str(e)}")
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Scheme matching error: {str(e)}")
 
 
@@ -214,31 +251,35 @@ def rule_based_filter(profile: dict, schemes: list) -> list:
         # Gender check
         gender_req = elig.get("gender", "all")
         if gender_req != "all" and profile.get("gender"):
-            if profile["gender"] != gender_req:
+            p_gender = str(profile["gender"]).lower()
+            if p_gender != str(gender_req).lower():
                 continue
 
         # Occupation check
         occ_list = elig.get("occupation", ["all"])
         if "all" not in occ_list and profile.get("occupation"):
-            if profile["occupation"].lower() not in [o.lower() for o in occ_list]:
+            p_occ = str(profile["occupation"]).lower()
+            if p_occ not in [str(o).lower() for o in occ_list]:
                 continue
 
         # State check
         state_list = elig.get("states", ["all"])
         if "all" not in state_list and profile.get("state"):
-            if profile["state"] not in state_list:
+            p_state = str(profile["state"]).lower()
+            if p_state not in [str(s).lower() for s in state_list]:
                 continue
 
         # Income check
         income_max = elig.get("income_max_annual")
         if income_max is not None and profile.get("annual_income") is not None:
-            if profile["annual_income"] > income_max:
+            if float(profile["annual_income"]) > float(income_max):
                 continue
 
         # Category check
         cat_list = elig.get("category", ["all"])
         if "all" not in cat_list and profile.get("category"):
-            if profile["category"] not in cat_list:
+            p_cat = str(profile["category"]).lower()
+            if p_cat not in [str(c).lower() for c in cat_list]:
                 continue
 
         # BPL check

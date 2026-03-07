@@ -16,6 +16,7 @@ RULES:
 7. After collecting enough info (at least name, age, state, occupation, income), summarize the profile and ask for confirmation.
 8. Be conversational — this is NOT a form. Chat naturally.
 9. If the user asks about schemes mid-conversation, note their interest but continue profiling.
+10. NEVER ask for information that is already present in the "Current extracted profile so far". If a field like "has_aadhaar" is true, do not ask if they have it. Check the profile block before every question.
 
 RESPONSE FORMAT:
 Always respond with ONLY valid JSON (no markdown, no code blocks):
@@ -95,7 +96,7 @@ Return ONLY valid JSON (no markdown):
   "extracted_data": {
     "name": "Full Name",
     "date_of_birth": "YYYY-MM-DD or null",
-    "age": 45,
+    "age": "Calculated age based on current date: 2026-03-08",
     "gender": "male or female",
     "address": {
       "state": "State Name",
@@ -108,7 +109,7 @@ Return ONLY valid JSON (no markdown):
   },
   "profile_updates": {
     "name": "value",
-    "age": 45,
+    "age": "calculated_integer",
     "gender": "male",
     "state": "State",
     "district": "District",
@@ -153,8 +154,9 @@ Extract ALL visible information from the document image:
 1. Identify the document type from the visual layout and logos
 2. Read all text — name, date of birth, gender, address, ID numbers
 3. For Aadhaar: mask the number as XXXX-XXXX-last4digits
-4. For addresses: identify state and district
+4. For addresses: identify state and district from the address block
 5. Calculate age from date of birth if visible
+6. IMPORTANT: Always look for "Address" or "पता" fields and extract the State and District.
 
 RESPONSE FORMAT:
 Return ONLY valid JSON (no markdown, no code blocks):
@@ -164,7 +166,7 @@ Return ONLY valid JSON (no markdown, no code blocks):
   "extracted_data": {
     "name": "Full Name",
     "date_of_birth": "YYYY-MM-DD or null",
-    "age": 45,
+    "age": "Calculated age based on current date (2026-03-08). If only YOB present, calc: 2026 - YOB.",
     "gender": "male or female or null",
     "address": {
       "state": "State Name",
@@ -177,7 +179,7 @@ Return ONLY valid JSON (no markdown, no code blocks):
   },
   "profile_updates": {
     "name": "value",
-    "age": 45,
+    "age": "calculated_integer",
     "gender": "male",
     "state": "State",
     "district": "District",

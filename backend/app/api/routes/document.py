@@ -129,11 +129,12 @@ async def process_with_claude_vision(file_bytes: bytes, media_type: str, languag
 def parse_claude_json(raw_response: str) -> dict:
     """Parse Claude's JSON response with fallback handling."""
     try:
-        cleaned = raw_response.strip()
-        if cleaned.startswith("```"):
-            lines = cleaned.split("\n")
-            json_lines = [l for l in lines if not l.strip().startswith("```")]
-            cleaned = "\n".join(json_lines)
+        import re
+        match = re.search(r"(\{.*\})", raw_response, re.DOTALL)
+        if match:
+            cleaned = match.group(1).strip()
+        else:
+            cleaned = raw_response.strip()
         return json.loads(cleaned)
     except json.JSONDecodeError:
         return {

@@ -80,5 +80,18 @@ export const api = {
             responseType: 'blob',
         });
         return response.data; // Returns audio blob
+    },
+
+    transcribeVoice: async (audioBlob, language) => {
+        const formData = new FormData();
+        formData.append('audio', audioBlob, 'recording.webm');
+        formData.append('language', language);
+
+        const response = await apiClient.post('/voice/transcribe', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+        return response.data;
     }
 };

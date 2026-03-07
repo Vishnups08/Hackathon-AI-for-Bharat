@@ -1,0 +1,254 @@
+[
+  {
+    "name": "Andaman & Nicobar Island",
+    "coordinates": [
+      92.917,
+      11.02
+    ]
+  },
+  {
+    "name": "Andhra Pradesh",
+    "coordinates": [
+      79.879,
+      15.245
+    ]
+  },
+  {
+    "name": "Arunanchal Pradesh",
+    "coordinates": [
+      94.638,
+      26.927
+    ]
+  },
+  {
+    "name": "Assam",
+    "coordinates": [
+      92.787,
+      25.331
+    ]
+  },
+  {
+    "name": "Bihar",
+    "coordinates": [
+      85.564,
+      24.688
+    ]
+  },
+  {
+    "name": "Chhattisgarh",
+    "coordinates": [
+      81.987,
+      20.492
+    ]
+  },
+  {
+    "name": "Puducherry",
+    "coordinates": [
+      79.709,
+      11.318
+    ]
+  },
+  {
+    "name": "Punjab",
+    "coordinates": [
+      75.375,
+      29.584
+    ]
+  },
+  {
+    "name": "Rajasthan",
+    "coordinates": [
+      73.804,
+      25.541
+    ]
+  },
+  {
+    "name": "Sikkim",
+    "coordinates": [
+      88.436,
+      26.478
+    ]
+  },
+  {
+    "name": "Tamil Nadu",
+    "coordinates": [
+      78.359,
+      10.779
+    ]
+  },
+  {
+    "name": "Chandigarh",
+    "coordinates": [
+      76.733,
+      29.485
+    ]
+  },
+  {
+    "name": "Telangana",
+    "coordinates": [
+      79.018,
+      17.212
+    ]
+  },
+  {
+    "name": "Tripura",
+    "coordinates": [
+      91.705,
+      22.853
+    ]
+  },
+  {
+    "name": "Uttar Pradesh",
+    "coordinates": [
+      80.545,
+      25.864
+    ]
+  },
+  {
+    "name": "Uttarakhand",
+    "coordinates": [
+      79.166,
+      28.93
+    ]
+  },
+  {
+    "name": "West Bengal",
+    "coordinates": [
+      87.913,
+      22.953
+    ]
+  },
+  {
+    "name": "Odisha",
+    "coordinates": [
+      84.379,
+      19.786
+    ]
+  },
+  {
+    "name": "Dadara & Nagar Havelli",
+    "coordinates": [
+      73.019,
+      19.491
+    ]
+  },
+  {
+    "name": "Daman & Diu",
+    "coordinates": [
+      72.804,
+      19.692
+    ]
+  },
+  {
+    "name": "Goa",
+    "coordinates": [
+      74.002,
+      14.908
+    ]
+  },
+  {
+    "name": "Gujarat",
+    "coordinates": [
+      71.549,
+      21.852
+    ]
+  },
+  {
+    "name": "Haryana",
+    "coordinates": [
+      76.296,
+      28.018
+    ]
+  },
+  {
+    "name": "Himachal Pradesh",
+    "coordinates": [
+      77.204,
+      30.605
+    ]
+  },
+  {
+    "name": "Jammu & Kashmir",
+    "coordinates": [
+      76.289,
+      33.177
+    ]
+  },
+  {
+    "name": "Jharkhand",
+    "coordinates": [
+      85.518,
+      22.771
+    ]
+  },
+  {
+    "name": "Karnataka",
+    "coordinates": [
+      76.123,
+      14.274
+    ]
+  },
+  {
+    "name": "Kerala",
+    "coordinates": [
+      76.366,
+      10.244
+    ]
+  },
+  {
+    "name": "Lakshadweep",
+    "coordinates": [
+      72.909,
+      11.323
+    ]
+  },
+  {
+    "name": "Madhya Pradesh",
+    "coordinates": [
+      78.24,
+      22.658
+    ]
+  },
+  {
+    "name": "Maharashtra",
+    "coordinates": [
+      76.047,
+      18.783
+    ]
+  },
+  {
+    "name": "Manipur",
+    "coordinates": [
+      93.842,
+      23.789
+    ]
+  },
+  {
+    "name": "Meghalaya",
+    "coordinates": [
+      91.236,
+      24.553
+    ]
+  },
+  {
+    "name": "Mizoram",
+    "coordinates": [
+      92.797,
+      22.442
+    ]
+  },
+  {
+    "name": "Nagaland",
+    "coordinates": [
+      94.426,
+      25.047
+    ]
+  },
+  {
+    "name": "NCT of Delhi",
+    "coordinates": [
+      77.071,
+      27.501
+    ]
+  }
+]

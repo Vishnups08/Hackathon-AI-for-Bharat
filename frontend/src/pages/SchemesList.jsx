@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useStore } from '../stores/useStore';
 import { api } from '../lib/api';
-import { Search, Filter, Loader2, CheckCircle2, ChevronRight, Scale } from 'lucide-react';
+import { Search, Filter, Loader2, CheckCircle2, ChevronRight, Scale, List as ListIcon } from 'lucide-react';
 
 export default function SchemesList() {
     const {
@@ -112,8 +112,8 @@ export default function SchemesList() {
                             key={c.id}
                             onClick={() => setFilter(c.id)}
                             className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors ${filter === c.id
-                                    ? 'bg-primary-600 text-white shadow-sm'
-                                    : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
+                                ? 'bg-primary-600 text-white shadow-sm'
+                                : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
                                 }`}
                         >
                             {isHindi ? c.label_hi : c.label_en}
@@ -142,8 +142,8 @@ export default function SchemesList() {
 
                                     {scheme.eligibility_score && (
                                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold ${scheme.eligibility_score >= 80 ? 'bg-green-100 text-green-800' :
-                                                scheme.eligibility_score >= 60 ? 'bg-yellow-100 text-yellow-800' :
-                                                    'bg-gray-100 text-gray-800'
+                                            scheme.eligibility_score >= 60 ? 'bg-yellow-100 text-yellow-800' :
+                                                'bg-gray-100 text-gray-800'
                                             }`}>
                                             {scheme.eligibility_score}% Match
                                         </span>
@@ -184,10 +184,10 @@ export default function SchemesList() {
                                     onClick={() => addToCompareList(scheme.scheme_id)}
                                     disabled={schemesCompareList.length >= 3 && !schemesCompareList.includes(scheme.scheme_id)}
                                     className={`text-sm font-medium flex items-center ${schemesCompareList.includes(scheme.scheme_id)
-                                            ? 'text-primary-600 font-bold'
-                                            : schemesCompareList.length >= 3
-                                                ? 'text-gray-400 cursor-not-allowed'
-                                                : 'text-gray-600 hover:text-primary-600'
+                                        ? 'text-primary-600 font-bold'
+                                        : schemesCompareList.length >= 3
+                                            ? 'text-gray-400 cursor-not-allowed'
+                                            : 'text-gray-600 hover:text-primary-600'
                                         }`}
                                 >
                                     <Scale className="w-4 h-4 mr-1" />
@@ -211,7 +211,7 @@ export default function SchemesList() {
 
             {!isLoading && filteredSchemes.length === 0 && (
                 <div className="text-center py-16">
-                    <List className="mx-auto h-12 w-12 text-gray-400" />
+                    <ListIcon className="mx-auto h-12 w-12 text-gray-400" />
                     <h3 className="mt-2 text-sm font-medium text-gray-900">{isHindi ? 'कोई योजना नहीं मिली' : 'No schemes found'}</h3>
                     <p className="mt-1 text-sm text-gray-500">{isHindi ? 'कृपया अपनी खोज या फ़िल्टर बदलें।' : 'Try changing your filters or updating your profile.'}</p>
                 </div>

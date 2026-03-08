@@ -40,13 +40,15 @@ India allocates **₹14+ lakh crore annually** to 2,000+ welfare schemes, yet:
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page — Clean, accessible landing with clear CTAs](docs/screenshots/home.png)
+![localhost_5173-Jan Sahayak-cvscreenshot](https://github.com/user-attachments/assets/f96af634-d349-4361-9828-682609ebf18c)
 
 ### AI Chat Assistant
-![Chat Interface — Conversational profile building with document upload](docs/screenshots/chat.png)
+![localhost_5173-Jan Sahayak-cvscreenshot (1)](https://github.com/user-attachments/assets/06942b03-a54d-4c3a-ba84-4e5295f7a650)
+
 
 ### Schemes Discovery
-![Schemes List — Category filters, document readiness progress bars](docs/screenshots/schemes.png)
+![localhost_5173-Jan Sahayak-cvscreenshot (2)](https://github.com/user-attachments/assets/85fc87f4-ef32-4ca5-a3cf-3d24fead6b2e)
+
 
 ---
 
@@ -280,3 +282,4 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 <p align="center">
   <strong>🇮🇳 Jan Sahayak — Because every citizen deserves to know their rights.</strong>
 </p>
+

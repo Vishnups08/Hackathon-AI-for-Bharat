@@ -210,21 +210,18 @@ export default function Home() {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                             {[
                                 {
-                                    step: '1',
                                     title_en: 'Chat or Upload', title_hi: 'बातचीत करें या अपलोड करें',
                                     desc_en: 'Tell us about yourself via a conversation or upload your Aadhaar/Ration Card.',
                                     desc_hi: 'बातचीत से अपनी जानकारी दें या आधार कार्ड अपलोड करें।',
                                     emoji: '💬'
                                 },
                                 {
-                                    step: '2',
                                     title_en: 'AI Matches Schemes', title_hi: 'AI योजनाएं खोजता है',
                                     desc_en: 'Our AI analyzes your profile against 30+ government schemes and provides a match score.',
                                     desc_hi: 'हमारा AI आपकी प्रोफ़ाइल की 30+ सरकारी योजनाओं से तुलना करता है।',
                                     emoji: '🤖'
                                 },
                                 {
-                                    step: '3',
                                     title_en: 'Apply with Guidance', title_hi: 'आवेदन करें',
                                     desc_en: 'Get step-by-step application guidance, missing document alerts, and scheme comparison.',
                                     desc_hi: 'चरण-दर-चरण आवेदन मार्गदर्शन और दस्तावेज़ सूची प्राप्त करें।',

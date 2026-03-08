@@ -1,11 +1,11 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { Home, MessageSquare, List, Columns, Globe, Mic } from 'lucide-react';
+import { Home, MessageSquare, List, Columns, Globe } from 'lucide-react';
 import { useStore } from '../stores/useStore';
 import logo from '../assets/logo.png';
 
 export default function Layout() {
     const location = useLocation();
-    const { language, setLanguage, isVoiceEnabled, toggleVoice } = useStore();
+    const { language, setLanguage } = useStore();
 
     const navItems = [
         { name: language === 'hi' ? 'मुख्य पृष्ठ' : 'Home', path: '/', icon: Home },
@@ -49,14 +49,6 @@ export default function Layout() {
                         </div>
 
                         <div className="flex items-center space-x-4">
-                            <button
-                                onClick={toggleVoice}
-                                className={`p-2 rounded-full ${isVoiceEnabled ? 'bg-primary-100 text-primary-600' : 'text-gray-400 hover:bg-gray-100'}`}
-                                title={isVoiceEnabled ? "Voice Enabled" : "Voice Disabled"}
-                            >
-                                <Mic className="w-5 h-5" />
-                            </button>
-
                             <div className="flex relative group">
                                 <button className="flex items-center space-x-1 text-sm font-medium text-gray-700 hover:text-primary-600 p-2 rounded-md hover:bg-gray-50">
                                     <Globe className="w-4 h-4" />

@@ -229,7 +229,7 @@ export default function Home() {
                                 }
                             ].map((item, idx) => (
                                 <motion.div
-                                    key={item.step}
+                                    key={item.title_en}
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
@@ -239,9 +239,7 @@ export default function Home() {
                                     <div className="w-24 h-24 rounded-full bg-primary-50 border-4 border-white shadow-lg mx-auto flex items-center justify-center mb-6 relative z-10">
                                         <span className="text-4xl">{item.emoji}</span>
                                     </div>
-                                    <div className="absolute top-2 right-1/2 translate-x-1/2 w-6 h-6 bg-primary-600 text-white rounded-full text-xs font-bold flex items-center justify-center z-20 shadow">
-                                        {item.step}
-                                    </div>
+
                                     <h3 className="text-xl font-bold text-gray-900 mb-2">
                                         {language === 'hi' ? item.title_hi : item.title_en}
                                     </h3>

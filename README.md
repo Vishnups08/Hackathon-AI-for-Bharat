@@ -2,10 +2,11 @@
 
 ### *Your AI Rights Enablement Assistant — Bridging the gap between government welfare and the citizens who deserve it.*
 
-[![Project Status](https://img.shields.io/badge/Status-MVP%20Ready-brightgreen)](https://github.com/Team-Setu/Jan-Sahayak)
-[![Tech Stack](https://img.shields.io/badge/Stack-React%20%2B%20FastAPI%20%2B%20LLM-blue)](https://github.com/Team-Setu/Jan-Sahayak)
-[![Schemes](https://img.shields.io/badge/Schemes-30%2B%20Government%20Schemes-orange)](https://github.com/Team-Setu/Jan-Sahayak)
-[![Languages](https://img.shields.io/badge/Languages-Hindi%20%2B%20English-purple)](https://github.com/Team-Setu/Jan-Sahayak)
+[![Project Status](https://img.shields.io/badge/Status-MVP%20Ready-brightgreen)](https://github.com/Vishnups08/Hackathon-AI-for-Bharat)
+[![Tech Stack](https://img.shields.io/badge/Stack-React%20%2B%20FastAPI%20%2B%20Llama%203.3-blue)](https://github.com/Vishnups08/Hackathon-AI-for-Bharat)
+[![Schemes](https://img.shields.io/badge/Schemes-31%2B%20Government%20Schemes-orange)](https://github.com/Vishnups08/Hackathon-AI-for-Bharat)
+[![Languages](https://img.shields.io/badge/Languages-Hindi%20%2B%20English-purple)](https://github.com/Vishnups08/Hackathon-AI-for-Bharat)
+[![Live Demo](https://img.shields.io/badge/Live-http%3A%2F%2F34.229.200.153-green)](http://34.229.200.153)
 
 ---
 
@@ -30,7 +31,7 @@ India allocates **₹14+ lakh crore annually** to 2,000+ welfare schemes, yet:
 |---|---|
 | 🗣️ **Conversational Profile Building** | AI asks 5-7 simple questions in your language instead of complex forms |
 | 📷 **Document Intelligence** | Upload Aadhaar/Ration Card → AI extracts data via OCR + LLM |
-| 🎯 **Smart Scheme Matching** | Rule-based filtering + LLM scoring across 30+ schemes |
+| 🎯 **Smart Scheme Matching** | Rule-based filtering + LLM scoring across 31+ schemes |
 | 📋 **Document Readiness Scoring** | Know exactly which documents you have vs. need ("3/5 ready") |
 | 📊 **Scheme Comparison** | AI compares schemes and recommends which to apply for first |
 | 🌐 **Multilingual** | Full Hindi + English support with voice input |
@@ -55,30 +56,37 @@ India allocates **₹14+ lakh crore annually** to 2,000+ welfare schemes, yet:
 ## 🏗️ Architecture
 
 ```
-┌──────────────────────────────┐
-│   REACT FRONTEND (Vite)      │
-│   • Chat Interface           │
-│   • Scheme Cards & Details   │
-│   • Document Upload          │
-│   • Scheme Comparison        │
-│   • Hindi/English Toggle     │
-└──────────────┬───────────────┘
-               │ REST API (JSON)
-┌──────────────▼───────────────┐
-│   FASTAPI BACKEND (Python)   │
-│   • Conversation Engine      │
-│   • Document Intelligence    │
-│   • Scheme Matching Engine   │
-│   • Voice STT/TTS            │
-└──────────────┬───────────────┘
-               │
-┌──────────────▼───────────────┐
-│   AI & DATA LAYER            │
-│   • LLM (via OpenRouter)     │
-│   • OCR + Vision Analysis    │
-│   • 30+ Schemes Database     │
-│   • Rule-based Filters       │
-└──────────────────────────────┘
+┌──────────────────────────────────────────────────────────┐
+│  CLIENT LAYER                                            │
+│  Mobile Browser / Desktop Browser                        │
+└──────────────────────┬───────────────────────────────────┘
+                       │ HTTPS / REST API
+┌──────────────────────▼───────────────────────────────────┐
+│  AWS AMPLIFY — React Frontend                            │
+│  Chat Interface │ Scheme Cards │ Document Upload          │
+│  Scheme Comparison │ Hindi/English Toggle                 │
+│  State: Zustand │ Auto CI/CD from GitHub                  │
+└──────────────────────┬───────────────────────────────────┘
+                       │ JSON API Calls
+┌──────────────────────▼───────────────────────────────────┐
+│  AMAZON EC2 — FastAPI Backend (Gunicorn + Nginx)         │
+│  ┌────────────────┐  ┌────────────────┐  ┌────────────┐  │
+│  │ Conversation   │  │ Document       │  │ Scheme     │  │
+│  │ Engine         │  │ Intelligence   │  │ Matcher    │  │
+│  │ (LLM)          │  │ (Textract+LLM) │  │ (Rules+LLM)│  │
+│  └────────────────┘  └────────────────┘  └────────────┘  │
+└──────────────────────┬───────────────────────────────────┘
+                       │
+┌──────────────────────▼───────────────────────────────────┐
+│  AI & DATA LAYER                                         │
+│  • NVIDIA NIM API (Llama 3.3 70B — Free)                 │
+│  • Amazon Textract (Document OCR)                        │
+│  • Amazon Polly (Text-to-Speech: Hindi + English)        │
+│  • Amazon S3 (File Storage)                              │
+│  • Amazon DynamoDB (Session Store)                        │
+│  • 31+ Government Schemes (JSON Database)                │
+│  • AWS Lambda + Mangum (Serverless Ready)                │
+└──────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -90,10 +98,10 @@ India allocates **₹14+ lakh crore annually** to 2,000+ welfare schemes, yet:
 |---|---|
 | React 18 | UI Framework |
 | Vite 4 | Build Tool |
-| Tailwind CSS 3 | Styling |
+| Vanilla CSS | Styling |
 | Zustand 5 | State Management |
-| Framer Motion 12 | Animations |
-| React Router 7 | Routing |
+| Framer Motion 12 | Animations & Scroll Effects |
+| React Router 7 | Client-side Routing |
 | Axios | HTTP Client |
 | Lucide React | Icons |
 
@@ -102,12 +110,23 @@ India allocates **₹14+ lakh crore annually** to 2,000+ welfare schemes, yet:
 |---|---|
 | Python 3.11+ | Backend Language |
 | FastAPI | Web Framework (async) |
-| Uvicorn | ASGI Server |
-| OpenRouter API | LLM Access (GPT-4o / Gemini / Llama) |
+| Gunicorn + Uvicorn | Production ASGI Server |
+| NVIDIA NIM API | LLM Access (Llama 3.3 70B — Free) |
 | Pydantic | Data Validation |
 | httpx | Async HTTP Client |
 | Mangum | AWS Lambda Adapter |
-| boto3 | AWS Services (Textract, Polly, Transcribe) |
+| boto3 | AWS Services (Textract, Polly, S3, DynamoDB) |
+
+### AWS Services
+| Service | Purpose |
+|---|---|
+| Amazon EC2 | Backend hosting (t2.micro Free Tier) |
+| AWS Amplify | Frontend hosting with auto CI/CD |
+| Amazon Textract | Document OCR (Aadhaar, Ration Card) |
+| Amazon Polly | Text-to-Speech (Hindi + English) |
+| Amazon S3 | Audio & document file storage |
+| Amazon DynamoDB | Session & chat history store |
+| AWS Lambda | Serverless deployment option |
 
 ---
 
@@ -117,12 +136,12 @@ India allocates **₹14+ lakh crore annually** to 2,000+ welfare schemes, yet:
 - **Node.js** ≥ 18.x
 - **Python** ≥ 3.11
 - **npm** or **yarn**
-- An **OpenRouter API key** ([get one here](https://openrouter.ai/))
+- An **NVIDIA NIM API key** ([get one free here](https://build.nvidia.com/))
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/Team-Setu/Jan-Sahayak.git
-cd Jan-Sahayak
+git clone https://github.com/Vishnups08/Hackathon-AI-for-Bharat.git
+cd Hackathon-AI-for-Bharat
 ```
 
 ### 2. Backend Setup
@@ -139,7 +158,7 @@ pip install -r requirements.txt
 
 # Set up environment variables
 copy .env.example .env
-# Edit .env and add your OPENROUTER_API_KEY
+# Edit .env and add your LLM_API_KEY
 
 # Start the server
 uvicorn app.main:app --reload
@@ -162,8 +181,9 @@ The app will be running at `http://localhost:5173`.
 
 **Backend** (`backend/.env`):
 ```env
-OPENROUTER_API_KEY=your_openrouter_api_key_here
-LLM_MODEL_ID=google/gemini-2.0-flash-001
+LLM_API_KEY=your_nvidia_nim_api_key_here
+LLM_BASE_URL=https://integrate.api.nvidia.com/v1/chat/completions
+LLM_MODEL_ID=meta/llama-3.3-70b-instruct
 FRONTEND_URL=http://localhost:5173
 ```
 
@@ -176,7 +196,7 @@ VITE_API_URL=http://localhost:8000/api
 
 ## 📋 Scheme Database
 
-Jan Sahayak includes **30+ real Indian government schemes** across 7 categories:
+Jan Sahayak includes **31+ real Indian government schemes** across 7 categories:
 
 | Category | Schemes | Examples |
 |---|---|---|
@@ -230,7 +250,7 @@ Compare 2-3 schemes side-by-side with personalized AI recommendation on which to
 
 | Phase | Features |
 |---|---|
-| ✅ Phase 1 (Current) | Web app, conversational AI, 30+ schemes, document upload, Hindi + English |
+| ✅ Phase 1 (Current) | Web app, conversational AI, 31+ schemes, document upload, Hindi + English, deployed on AWS (EC2 + Amplify) |
 | 🔜 Phase 2 | WhatsApp bot integration, RAG-based semantic search |
 | 📋 Phase 3 | 10+ Indian languages, voice-first interaction, IVRS for feature phones |
 | 🌍 Phase 4 | State-specific scheme databases for all 28 states + 8 UTs |
@@ -240,21 +260,21 @@ Compare 2-3 schemes side-by-side with personalized AI recommendation on which to
 ## 📁 Project Structure
 
 ```
-Jan-Sahayak/
+Hackathon-AI-for-Bharat/
 ├── frontend/                 # React + Vite frontend
 │   ├── src/
 │   │   ├── components/       # Layout, IndiaMap, ScrollAnimation
 │   │   ├── pages/            # Home, Chat, SchemesList, SchemeDetail, CompareSchemes
-│   │   ├── stores/           # Zustand state management
+│   │   ├── stores/           # Zustand state management (useStore.js)
 │   │   ├── lib/              # API client (Axios)
-│   │   └── assets/           # Logo, images
+│   │   └── assets/           # Logo, images, scroll animation frames
 │   └── package.json
 │
 ├── backend/                  # Python FastAPI backend
 │   ├── app/
 │   │   ├── api/routes/       # chat, document, schemes, voice, health
-│   │   ├── core/             # LLM client (OpenRouter)
-│   │   ├── data/schemes/     # 7 JSON files with 30+ schemes
+│   │   ├── core/             # LLM client (NVIDIA NIM API)
+│   │   ├── data/schemes/     # 7 JSON files with 31+ schemes
 │   │   ├── prompts/          # LLM system prompts
 │   │   └── config.py         # Environment configuration
 │   └── requirements.txt

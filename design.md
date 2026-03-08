@@ -93,13 +93,13 @@ Jan Sahayak is a **React-based, AI-powered web application** that enables Indian
 │ │                   │ │ ENGINE            │ │ ENGINE           │     │
 │ │ ┌───────────────┐ │ │ ┌───────────────┐ │ │ ┌──────────────┐ │     │
 │ │ │ LLM           │ │ │ │ OCR Processor │ │ │ │ Rule-Based   │ │     │
-│ │ │ Orchestrator  │ │ │ │ (Tesseract /  │ │ │ │ Filter       │ │     │
-│ │ │               │ │ │ │ Cloud Vision) │ │ │ │              │ │     │
+│ │ │ Orchestrator  │ │ │ │ (Amazon      │ │ │ │ Filter       │ │     │
+│ │ │               │ │ │ │  Textract)   │ │ │ │              │ │     │
 │ │ └───────────────┘ │ │ └───────────────┘ │ │ └──────────────┘ │     │
 │ │ ┌───────────────┐ │ │ ┌───────────────┐ │ │ ┌──────────────┐ │     │
-│ │ │ Profile       │ │ │ │ LLM Data      │ │ │ │ RAG Vector   │ │     │
-│ │ │ Extractor     │ │ │ │ Parser        │ │ │ │ Search       │ │     │
-│ │ │               │ │ │ │               │ │ │ │ (ChromaDB)   │ │     │
+│ │ │ Profile       │ │ │ │ LLM Data      │ │ │ │ LLM Scoring  │ │     │
+│ │ │ Extractor     │ │ │ │ Parser        │ │ │ │ & Ranking    │ │     │
+│ │ │               │ │ │ │               │ │ │ │              │ │     │
 │ │ └───────────────┘ │ │ └───────────────┘ │ │ └──────────────┘ │     │
 │ │ ┌───────────────┐ │ │ ┌───────────────┐ │ │ ┌──────────────┐ │     │
 │ │ │ Context       │ │ │ │ Document      │ │ │ │ LLM          │ │     │
@@ -109,7 +109,7 @@ Jan Sahayak is a **React-based, AI-powered web application** that enables Indian
 │ │ ┌───────────────┐ │ │ ┌───────────────┐ │ │ ┌──────────────┐ │     │
 │ │ │ Translation   │ │ │ │ Privacy       │ │ │ │ Document     │ │     │
 │ │ │ Service       │ │ │ │ Masker        │ │ │ │ Readiness    │ │     │
-│ │ │ (Bhashini)    │ │ │ │               │ │ │ │ Scorer       │ │     │
+│ │ │ (In-built)    │ │ │ │               │ │ │ │ Scorer       │ │     │
 │ │ └───────────────┘ │ │ └───────────────┘ │ │ └──────────────┘ │     │
 │ └───────────────────┘ └───────────────────┘ └──────────────────┘     │
 │                                                                      │
@@ -117,12 +117,12 @@ Jan Sahayak is a **React-based, AI-powered web application** that enables Indian
 │ │ VOICE ENGINE      │ │ COMPARISON        │                          │
 │ │                   │ │ ENGINE            │                          │
 │ │ ┌───────────────┐ │ │ ┌───────────────┐ │                          │
-│ │ │ Whisper STT   │ │ │ │ Multi-Scheme    │ │                          │
-│ │ │               │ │ │ │ Comparator      │ │                          │
+│ │ │ Amazon Polly  │ │ │ │ Multi-Scheme    │ │                          │
+│ │ │ (TTS)        │ │ │ │ Comparator      │ │                          │
 │ │ └───────────────┘ │ │ └───────────────┘ │                          │
 │ │ ┌───────────────┐ │ │ ┌───────────────┐ │                          │
-│ │ │ gTTS / TTS    │ │ │ │ Priority        │ │                          │
-│ │ │               │ │ │ │ Recommender     │ │                          │
+│ │ │ Amazon S3    │ │ │ │ Priority        │ │                          │
+│ │ │ (Storage)    │ │ │ │ Recommender     │ │                          │
 │ │ └───────────────┘ │ │ └───────────────┘ │                          │
 │ └───────────────────┘ └───────────────────┘                          │
 │                                                                      │
@@ -167,9 +167,9 @@ Jan Sahayak is a **React-based, AI-powered web application** that enables Indian
 ### 2.2 Architecture Pattern
 - **Frontend:** React SPA (Single Page Application) with component-based architecture
 - **Backend:** Python FastAPI with modular service layer
-- **AI Layer:** Multi-engine AI with RAG, OCR, LLM, and Speech processing
+- **AI Layer:** Multi-engine AI with OCR (Amazon Textract), LLM (NVIDIA NIM), and Speech processing (Amazon Polly)
 - **Communication:** REST API over HTTPS with JSON payloads
-- **State Management:** Client-side state (Zustand/Context API) + server-side session (in-memory)
+- **State Management:** Client-side state (Zustand) + server-side session (Amazon DynamoDB)
 
 ---
 
@@ -181,16 +181,12 @@ Jan Sahayak is a **React-based, AI-powered web application** that enables Indian
 |---|---|---|
 | React | 18.x | UI framework |
 | Vite | 5.x | Build tool and dev server |
-| React Router | 6.x | Client-side routing |
-| Zustand | 4.x | State management (lightweight alternative to Redux) |
-| Tailwind CSS | 3.x | Utility-first CSS framework |
+| React Router | 7.x | Client-side routing |
+| Zustand | 5.x | State management (single unified store) |
+| Vanilla CSS | — | Custom styling |
 | Axios | 1.x | HTTP client for API calls |
-| React Icons | 5.x | Icon library |
-| react-media-recorder | 1.x | Voice recording in browser |
-| react-markdown | 9.x | Render markdown responses |
-| Framer Motion | 11.x | Smooth animations and transitions |
-| i18next | 23.x | Internationalization framework |
-| react-dropzone | 14.x | Document upload with drag-and-drop |
+| Lucide React | 0.x | Icon library |
+| Framer Motion | 12.x | Smooth animations and transitions |
 
 ### 3.2 Project Structure
 ```text
@@ -684,19 +680,16 @@ const useDocumentStore = create((set, get) => ({
 Technology	Version	Purpose
 Python	3.11+	Backend language
 FastAPI	0.104+	Web framework with async support
-Uvicorn	0.24+	ASGI server
-OpenAI SDK	1.x	GPT-4o-mini API access
-ChromaDB	0.4+	Vector database for RAG
-sentence-transformers	2.x	Text embeddings for vector search
+Gunicorn	22.x	Production WSGI/ASGI server
+Uvicorn	0.24+	ASGI worker for Gunicorn
+NVIDIA NIM API	—	Llama 3.3 70B access (Free tier)
+httpx	0.25+	Async HTTP client for LLM API calls
 Pillow	10.x	Image processing
-pytesseract	0.3+	OCR engine (Tesseract wrapper)
-openai-whisper	latest	Speech-to-text (alternative: API)
-gTTS	2.x	Text-to-speech
+boto3	1.x	AWS Services (Textract, Polly, S3, DynamoDB)
 pydantic	2.x	Data validation and serialization
 python-multipart	0.x	File upload handling
-httpx	0.25+	Async HTTP client (for Bhashini API)
 python-dotenv	1.x	Environment variable management
-cachetools	5.x	In-memory caching
+Mangum	0.x	AWS Lambda adapter for serverless deployment
 ### 4.2 Project Structure
 ```
 jan-sahayak-backend/

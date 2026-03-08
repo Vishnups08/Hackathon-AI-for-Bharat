@@ -75,15 +75,15 @@ Jan Sahayak is an **AI-powered, multilingual web application** that enables any 
 
 1. **Conversational Profile Building** — AI asks simple natural language questions instead of complex forms
 2. **Document Intelligence** — Upload photos of documents (Aadhaar, Ration Card) and AI automatically extracts profile data
-3. **Intelligent Scheme Matching** — RAG-based engine matches user profile against a curated database of 100+ government schemes
+3. **Intelligent Scheme Matching** — Rule-based filtering + LLM scoring engine matches user profile against a curated database of 31+ government schemes
 4. **Document Readiness Scoring** — AI tells users not just which schemes they're eligible for, but which documents they already have and which they still need
 5. **Scheme Comparison** — AI compares and recommends the most beneficial schemes for the user's specific situation
-6. **Multilingual Support** — Works in Hindi, English, Tamil, Telugu, Marathi, Bengali, Kannada, Gujarati, Malayalam, Punjabi, and Odia
+6. **Multilingual Support** — Works in Hindi and English with voice output via Amazon Polly
 
 ### 3.2 Four Key Innovations
 
 ####  INNOVATION 1: Document-to-Eligibility Pipeline
-**What:** User uploads a photo of their Aadhaar card, Ration Card, or Income Certificate → AI uses OCR + LLM to extract structured data (name, age, address, income, category) → Instantly calculates scheme eligibility across 100+ schemes.
+**What:** User uploads a photo of their Aadhaar card, Ration Card, or Income Certificate → AI uses Amazon Textract OCR + LLM to extract structured data (name, age, address, income, category) → Instantly calculates scheme eligibility across 31+ schemes.
 
 **Why it's innovative:** No existing solution converts a document photo into instant eligibility results. This eliminates the need for users to manually enter data they may not even know (like exact income brackets or category classifications).
 
@@ -454,7 +454,7 @@ Based on your profile, here are your top 3 schemes compared:
 
 ## 8. Scheme Database Requirements
 
-### 8.1 Minimum Scheme Coverage (MVP — 30+ schemes)
+### 8.1 Minimum Scheme Coverage (MVP — 31+ schemes)
 
 #### Agriculture & Farming (6+ schemes)
 1. PM-KISAN Samman Nidhi — ₹6,000/year cash transfer for farmers
@@ -568,7 +568,7 @@ For each scheme, the following data must be maintained:
 
 | Phase | Features |
 |---|---|
-| Phase 1 | Web app, conversational profile, 30+ schemes, document upload, Hindi + English |
+| Phase 1 | Web app, conversational profile, 31+ schemes, document upload, Hindi + English, deployed on AWS (EC2 + Amplify) |
 | Phase 2 | WhatsApp bot integration via Twilio/WhatsApp Business API, same AI engine |
 | Phase 3 | Full voice interaction, 10+ Indian languages, IVRS for feature phones |
 | Phase 4 | State-specific scheme databases for all 28 states and 8 UTs |

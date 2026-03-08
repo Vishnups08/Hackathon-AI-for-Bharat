@@ -16,16 +16,22 @@ export default function SchemeDetail() {
         const fetchDetail = async () => {
             setIsLoading(true);
             try {
-                // Find in matched schemes first
+                // Find in matched schemes to retain AI scores
                 const matched = matchedSchemes.find(s => s.scheme_id === id);
-                if (matched) {
-                    setScheme(matched);
-                } else {
-                    // Fetch from API
-                    const res = await api.getSchemeDetails(id);
-                    if (res?.scheme) {
-                        setScheme(res.scheme);
+
+                // Fetch full scheme details from API
+                const res = await api.getSchemeDetails(id);
+                if (res?.scheme) {
+                    const fullScheme = res.scheme;
+                    // Merge matching info if available
+                    if (matched) {
+                        fullScheme.eligibility_score = matched.eligibility_score;
+                        fullScheme.eligibility_reasoning = matched.eligibility_reasoning;
+                        fullScheme.document_readiness = matched.document_readiness;
                     }
+                    setScheme(fullScheme);
+                } else if (matched) {
+                    setScheme(matched);
                 }
             } catch (err) {
                 console.error("Failed to load scheme details", err);

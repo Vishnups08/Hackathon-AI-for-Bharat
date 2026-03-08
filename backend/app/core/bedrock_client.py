@@ -1,10 +1,11 @@
 import json
 import httpx
-from app.config import OPENROUTER_API_KEY, LLM_MODEL_ID
+from app.config import LLM_API_KEY, LLM_MODEL_ID, LLM_BASE_URL
 
 async def invoke_claude(system_prompt: str, user_message: str, chat_history: list = None):
     """
-    Invoke LLM via OpenRouter API (keeps same name for compatibility).
+    Invoke LLM via NVIDIA NIM API (OpenAI-compatible).
+    Keeps function name for backward compatibility.
     """
     if chat_history is None:
         chat_history = []
@@ -26,33 +27,41 @@ async def invoke_claude(system_prompt: str, user_message: str, chat_history: lis
         "content": user_message
     })
     
-    async with httpx.AsyncClient(timeout=30.0) as client:
+    async with httpx.AsyncClient(timeout=120.0) as client:
         response = await client.post(
-            "https://openrouter.ai/api/v1/chat/completions",
+            LLM_BASE_URL,
             headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "Authorization": f"Bearer {LLM_API_KEY}",
                 "Content-Type": "application/json",
-                "HTTP-Referer": "https://jansahayak.ai", # Helpful for some OpenRouter models
-                "X-OpenRouter-Title": "Jan Sahayak",
+                "Accept": "application/json",
             },
             json={
                 "model": LLM_MODEL_ID,
                 "messages": messages,
                 "temperature": 0.5,
                 "max_tokens": 2048,
+                "stream": False,
             }
         )
         if response.status_code != 200:
-            print(f"OpenRouter Error: {response.status_code} - {response.text}")
+            print(f"LLM API Error: {response.status_code} - {response.text}")
             response.raise_for_status()
             
         response_json = response.json()
-        return response_json["choices"][0]["message"]["content"]
+        content = response_json["choices"][0]["message"]["content"]
+        
+        # Some models (like Kimi) include <think> tags — strip them
+        if "<think>" in content and "</think>" in content:
+            think_end = content.index("</think>") + len("</think>")
+            content = content[think_end:].strip()
+        
+        return content
 
 
 async def invoke_claude_with_image(system_prompt: str, user_message: str, image_bytes: bytes, media_type: str = "image/jpeg"):
     """
-    Invoke OpenRouter with an image for document analysis.
+    Invoke LLM with an image for document analysis.
+    Falls back to text-only if vision is not supported.
     """
     import base64
     image_b64 = base64.b64encode(image_bytes).decode("utf-8")
@@ -77,32 +86,36 @@ async def invoke_claude_with_image(system_prompt: str, user_message: str, image_
             ]
         })
     
-    # Use Gemini Flash (Paid version) for vision as well to avoid 429
-    vision_model = LLM_MODEL_ID if "gemini" in LLM_MODEL_ID else "google/gemini-2.0-flash-001"
-    
     async with httpx.AsyncClient(timeout=60.0) as client:
         response = await client.post(
-            "https://openrouter.ai/api/v1/chat/completions",
+            LLM_BASE_URL,
             headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "Authorization": f"Bearer {LLM_API_KEY}",
                 "Content-Type": "application/json",
-                "HTTP-Referer": "https://jansahayak.ai",
-                "X-OpenRouter-Title": "Jan Sahayak",
+                "Accept": "application/json",
             },
             json={
-                "model": vision_model,
+                "model": LLM_MODEL_ID,
                 "messages": messages,
                 "temperature": 0.3,
                 "max_tokens": 2048,
+                "stream": False,
             }
         )
         try:
             if response.status_code != 200:
-                print(f"OpenRouter Vision Error: {response.status_code} - {response.text}")
-                return "{}"
+                print(f"LLM Vision Error: {response.status_code} - {response.text}")
+                # Fallback: retry with text-only (strip image)
+                return await invoke_claude(system_prompt, user_message)
             response_json = response.json()
-            return response_json["choices"][0]["message"]["content"]
+            content = response_json["choices"][0]["message"]["content"]
+            
+            # Strip <think> tags if present
+            if "<think>" in content and "</think>" in content:
+                think_end = content.index("</think>") + len("</think>")
+                content = content[think_end:].strip()
+            
+            return content
         except Exception as e:
             print(f"Vision parsing error: {e}")
             return "{}"
-
